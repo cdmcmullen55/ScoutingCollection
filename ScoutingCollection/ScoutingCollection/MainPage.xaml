@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ScoutingCollection"
+             x:Class="ScoutingCollection.MainPage">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     Padding="20,0,20,0">
+            <Label Text="Team Number:"/>
+            <Entry x:Name="Team"
+                   Placeholder="i.e. 5472"
+                   TextChanged="Team_TextChanged"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal"
+                     Padding="20,0,20,0">
+            <Label Text="Match Number:" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Entry x:Name="Match"
+                   Placeholder="Ignore for pit scouting"
+                   TextChanged="Match_TextChanged"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <Button x:Name="PitScout" Text="Pit Scout Team" Clicked="PitScout_Clicked"/>
+
+        <Button x:Name="MatchScout" Text="Scout Match" Clicked="MatchScout_Clicked"/>
+
+    </StackLayout>
+
+</ContentPage>

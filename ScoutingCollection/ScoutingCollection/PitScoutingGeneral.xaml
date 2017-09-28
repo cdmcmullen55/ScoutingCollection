@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScoutingCollection.PitScoutingGeneral"
+             Title="General">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,20,10,20">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Team " FontSize="Large"/>
+                    <Label Text="{Binding Path=Text}" FontSize="Large"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Fuel: " FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                    <Switch x:Name="UsesFuel" 
+                            Scale="2.5" 
+                            Toggled="UsesFuel_Toggled" 
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Gears: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="UsesGears" 
+                            Scale="2.5" 
+                            Toggled="UsesGears_Toggled" 
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <Entry x:Name="DriveTrain" Placeholder="Drive Train"/>
+
+                <Entry x:Name="CIMs" Placeholder="CIMs Used" Keyboard="Telephone"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="FPS known? " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="FPS_known" 
+                            Scale="2.5" 
+                            Toggled="FPS_known_Toggled" 
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Speed (fps): " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}" 
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Speed_fps}"/>
+                </StackLayout>
+
+                <Slider x:Name="Speed_fps" Maximum="25" Minimum="2"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Speed (1-5): " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}"
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Speed_scale}"/>
+                </StackLayout>
+
+                <Slider x:Name="Speed_scale" Maximum="5" Minimum="1"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Shifts gears: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Shifts_gears" 
+                            Scale="2.5" 
+                            Toggled="Shifts_gears_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <Entry x:Name="Weight" Placeholder="Weight" Keyboard="Telephone"/>
+
+                <Entry x:Name="BallCap" Placeholder="Ball Capacity" Keyboard="Telephone"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Vision: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Vision" 
+                            Scale="2.5" 
+                            Toggled="Vision_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Active Gear Dropoff: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Active_gear" 
+                            Scale="2.5" 
+                            Toggled="Active_gear_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Ground Gear Pickup: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Ground_gear" 
+                            Scale="2.5" 
+                            Toggled="Ground_gear_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
