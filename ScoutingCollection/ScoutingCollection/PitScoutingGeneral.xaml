@@ -93,6 +93,41 @@
                             Toggled="Ground_gear_Toggled"
                             HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Ground Gears (1-5): " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}"
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Ground_gear_scale}"/>
+                </StackLayout>
+
+                <Slider x:Name="Ground_gear_scale" Maximum="5" Minimum="1" ValueChanged="Ground_scale_ValueChanged"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Gear Run Time known? " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Gear_time_known"
+                            Scale="2.5"
+                            Toggled="Gear_time_known_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gear Run (sec): " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}" 
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Gear_run_sec}"/>
+                </StackLayout>
+
+                <Slider x:Name="Gear_run_sec" Maximum="25" Minimum="5" ValueChanged="Gear_run_sec_ValueChanged"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gear Run (1-5): " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}"
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Gear_run_scale}"/>
+                </StackLayout>
+
+                <Slider x:Name="Gear_run_scale" Maximum="5" Minimum="1" ValueChanged="Gear_run_scale_ValueChanged"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

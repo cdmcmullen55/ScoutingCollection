@@ -6,11 +6,9 @@
   <!--Pages can be added as references or inline-->
     <local:PitScoutingGeneral/>
 
-    <ContentPage Title="Auto">
-        
-    </ContentPage>
-    
-    <ContentPage Title="Tele-op">
-        
-    </ContentPage>
+    <local:PitScoutingAuto/>
+
+    <local:PitScoutingTeleOp/>
+
+    <local:PitScoutingReport/>
 </TabbedPage>
