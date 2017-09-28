@@ -25,26 +25,32 @@ namespace ScoutingCollection
         private void UsesFuel_Toggled(object sender, ToggledEventArgs e)
         {
             Application.Current.Properties["pitUsesFuel"] = UsesFuel.IsToggled;
+            if (UsesFuel.IsToggled)
+            {
+                BallCap.IsEnabled = true;
+            }
+            else
+                BallCap.IsEnabled = false;
         }
 
         private void UsesGears_Toggled(object sender, ToggledEventArgs e)
         {
-
+            Application.Current.Properties["pitUsesGears"] = UsesGears.IsToggled;
         }
 
         private void Shifts_gears_Toggled(object sender, ToggledEventArgs e)
         {
-
+            Application.Current.Properties["pitShifts_gears"] = Shifts_gears.IsToggled;
         }
 
         private void Vision_Toggled(object sender, ToggledEventArgs e)
         {
-
+            Application.Current.Properties["pitVision"] = Vision.IsToggled;
         }
 
         private void Active_gear_Toggled(object sender, ToggledEventArgs e)
         {
-
+            Application.Current.Properties["pitActive_gear"] = Active_gear.IsToggled;
         }
 
         private void Ground_gear_Toggled(object sender, ToggledEventArgs e)
