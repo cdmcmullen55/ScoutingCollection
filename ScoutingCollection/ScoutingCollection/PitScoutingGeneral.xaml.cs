@@ -24,7 +24,7 @@ namespace ScoutingCollection
 
         private void UsesFuel_Toggled(object sender, ToggledEventArgs e)
         {
-
+            Application.Current.Properties["pitUsesFuel"] = UsesFuel.IsToggled;
         }
 
         private void UsesGears_Toggled(object sender, ToggledEventArgs e)
@@ -48,6 +48,36 @@ namespace ScoutingCollection
         }
 
         private void Ground_gear_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void DriveTrain_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void CIMs_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Speed_fps_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+
+        }
+
+        private void Speed_scale_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+
+        }
+
+        private void Weight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void BallCap_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
