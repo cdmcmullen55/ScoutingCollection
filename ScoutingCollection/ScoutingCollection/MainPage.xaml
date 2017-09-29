@@ -2,41 +2,55 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ScoutingCollection"
+             x:Name="MainPage"
              x:Class="ScoutingCollection.MainPage">
 
-    <StackLayout Padding="10,20,10,20">
-        <StackLayout Orientation="Horizontal"
-                     Padding="20,0,20,0"
-                     VerticalOptions="CenterAndExpand">
-            <Label Text="Team Number:" VerticalOptions="Center" FontSize="Medium"/>
-            <Entry x:Name="Team"
-                   Placeholder="i.e. 5472"
-                   TextChanged="Team_TextChanged"/>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:PitScoutingViewModel x:Key="viewModel"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,20" BindingContext="{StaticResource viewModel}">
+            <StackLayout Orientation="Horizontal"
+                         Padding="20,0,20,0"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="Team Number:" VerticalOptions="Center" FontSize="Medium"/>
+                <Entry x:Name="Team"
+                       Placeholder="i.e. 5472"
+                       TextChanged="Team_TextChanged"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         Padding="20,0,20,0"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="Match Number:" VerticalOptions="Center" FontSize="Medium"/>
+                <Entry x:Name="Match"
+                       Placeholder="Ignore for pit scouting"
+                       TextChanged="Match_TextChanged"
+                       Completed="Match_Completed"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <Button x:Name="PitScout" 
+                    Text="Pit Scout Team" 
+                    Clicked="PitScout_Clicked"
+                    Command="{Binding SaveTeamCommand}"
+                    CommandParameter="{Binding Source={x:Reference Team}, Path=Text}"
+                    FontSize="Medium"
+                    VerticalOptions="CenterAndExpand">
+                <Button.CommandParameter>
+                </Button.CommandParameter>
+            </Button>
+
+            <Button x:Name="MatchScout" 
+                    Text="Scout Match" 
+                    Clicked="MatchScout_Clicked"
+                    FontSize="Medium"
+                    VerticalOptions="CenterAndExpand"/>
+
         </StackLayout>
-
-        <StackLayout Orientation="Horizontal"
-                     Padding="20,0,20,0"
-                     VerticalOptions="CenterAndExpand">
-            <Label Text="Match Number:" VerticalOptions="Center" FontSize="Medium"/>
-            <Entry x:Name="Match"
-                   Placeholder="Ignore for pit scouting"
-                   TextChanged="Match_TextChanged"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-        </StackLayout>
-
-        <Button x:Name="PitScout" 
-                Text="Pit Scout Team" 
-                Clicked="PitScout_Clicked"
-                FontSize="Medium"
-                VerticalOptions="CenterAndExpand"/>
-
-        <Button x:Name="MatchScout" 
-                Text="Scout Match" 
-                Clicked="MatchScout_Clicked"
-                FontSize="Medium"
-                VerticalOptions="CenterAndExpand"/>
-
-    </StackLayout>
-
+    </ContentPage.Content>
 </ContentPage>

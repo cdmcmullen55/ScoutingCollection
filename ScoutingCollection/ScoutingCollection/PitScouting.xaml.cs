@@ -12,6 +12,8 @@ namespace ScoutingCollection
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PitScouting : TabbedPage
     {
+        public static String team_number;
+
         public PitScouting()
         {
             InitializeComponent();

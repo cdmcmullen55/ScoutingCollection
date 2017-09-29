@@ -19,10 +19,13 @@ namespace ScoutingCollection
             MatchScout.IsEnabled = false;
         }
 
-        async void PitScout_Clicked(object sender, EventArgs e) => await Navigation.PushModalAsync(new PitScouting
+        async void PitScout_Clicked(object sender, EventArgs e)
         {
-            BindingContext = Team
-        });
+            var button = sender as Button;
+            button.Command.Execute(button.CommandParameter);
+
+            await Navigation.PushModalAsync(new PitScouting());
+        }
 
         private void MatchScout_Clicked(object sender, EventArgs e)
         {
@@ -41,6 +44,11 @@ namespace ScoutingCollection
             Entry entry = (Entry)sender;
             MatchScout.IsEnabled = Int32.TryParse(Match.Text, out int result) &&
                                    Int32.TryParse(Team.Text, out result);
+        }
+
+        private void Match_Completed(object sender, EventArgs e)
+        {
+
         }
     }
 }
