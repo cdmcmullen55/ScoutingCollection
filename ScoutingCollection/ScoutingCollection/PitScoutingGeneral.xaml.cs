@@ -18,21 +18,28 @@ namespace ScoutingCollection
             UsesFuel.IsToggled = true;
             UsesGears.IsToggled = true;
             Speed_fps.IsEnabled = FPS_known.IsToggled;
+            Speed_scale.IsEnabled = !FPS_known.IsToggled;
             BallCap.IsEnabled = UsesFuel.IsToggled;
             Ground_gear.IsEnabled = UsesGears.IsToggled;
             Active_gear.IsEnabled = UsesGears.IsToggled;
             Ground_gear_scale.IsEnabled = Ground_gear.IsToggled;
+            Gear_time_known.IsEnabled = UsesGears.IsToggled;
+            Gear_run_sec.IsEnabled = Gear_time_known.IsToggled;
+            Gear_run_scale.IsEnabled = !Gear_time_known.IsToggled;
+            Ground_ball_pickup.IsEnabled = UsesFuel.IsToggled;
         }
 
         private void FPS_known_Toggled(object sender, ToggledEventArgs e)
         {
             Speed_fps.IsEnabled = FPS_known.IsToggled;
+            Speed_scale.IsEnabled = !FPS_known.IsToggled;
         }
 
         private void UsesFuel_Toggled(object sender, ToggledEventArgs e)
         {
             Application.Current.Properties["pitUsesFuel"] = UsesFuel.IsToggled;
-                BallCap.IsEnabled = UsesFuel.IsToggled;
+            BallCap.IsEnabled = UsesFuel.IsToggled;
+            Ground_ball_pickup.IsEnabled = UsesFuel.IsToggled;
         }
 
         private void UsesGears_Toggled(object sender, ToggledEventArgs e)
@@ -40,6 +47,7 @@ namespace ScoutingCollection
             Application.Current.Properties["pitUsesGears"] = UsesGears.IsToggled;
             Active_gear.IsEnabled = UsesGears.IsToggled;
             Ground_gear.IsEnabled = UsesGears.IsToggled;
+            Gear_time_known.IsEnabled = UsesGears.IsToggled;
         }
 
         private void Shifts_gears_Toggled(object sender, ToggledEventArgs e)
@@ -100,7 +108,8 @@ namespace ScoutingCollection
 
         private void Gear_time_known_Toggled(object sender, ToggledEventArgs e)
         {
-
+            Gear_run_sec.IsEnabled = Gear_time_known.IsToggled;
+            Gear_run_scale.IsEnabled = !Gear_time_known.IsToggled;
         }
 
         private void Gear_run_sec_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -109,6 +118,16 @@ namespace ScoutingCollection
         }
 
         private void Gear_run_scale_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+
+        }
+
+        private void Ground_ball_pickup_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void Strategy_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

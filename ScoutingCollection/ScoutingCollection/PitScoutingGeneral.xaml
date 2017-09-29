@@ -128,6 +128,24 @@
                 </StackLayout>
 
                 <Slider x:Name="Gear_run_scale" Maximum="5" Minimum="1" ValueChanged="Gear_run_scale_ValueChanged"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Ground Ball Pickup: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Ground_ball_pickup"
+                            Scale="2.5"
+                            Toggled="Ground_ball_pickup_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <Picker x:Name="Strategy" Title="Strategy" SelectedIndexChanged="Strategy_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Offense</x:String>
+                            <x:String>Defense</x:String>
+                            <x:String>Both</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
