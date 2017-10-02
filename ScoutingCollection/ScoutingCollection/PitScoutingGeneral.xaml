@@ -15,7 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <ContentPage.Content BindingContext="{StaticResource viewModel}">
+    <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,20,10,20">
 
@@ -28,19 +28,32 @@
                     <Label Text="Fuel: " FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
                     <Switch x:Name="UsesFuel" 
                             Toggled="UsesFuel_Toggled" 
-                            HorizontalOptions="EndAndExpand"/>
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding Fuel, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Gears: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="UsesGears" 
                             Toggled="UsesGears_Toggled" 
-                            HorizontalOptions="EndAndExpand"/>
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding Gears, Mode=OneWayToSource}"/>
                 </StackLayout>
 
-                <Entry x:Name="DriveTrain" Placeholder="Drive Train" TextChanged="DriveTrain_TextChanged"/>
+                <Label Text="Drive Train: " FontSize="Medium"/>
 
-                <Entry x:Name="CIMs" Placeholder="CIMs Used" Keyboard="Telephone" TextChanged="CIMs_TextChanged"/>
+                <Entry x:Name="DriveTrain" 
+                       Placeholder="Drive Train" 
+                       TextChanged="DriveTrain_TextChanged"
+                       Text="{Binding Drive_Train}"/>
+
+                <Label Text="CIMs Used: " FontSize="Medium"/>
+
+                <Entry x:Name="CIMs" 
+                       Placeholder="CIMs Used" 
+                       Keyboard="Telephone" 
+                       TextChanged="CIMs_TextChanged"
+                       Text="{Binding CIMs_Used}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="FPS known? " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
@@ -56,7 +69,11 @@
                            BindingContext="{Reference Name=Speed_fps}"/>
                 </StackLayout>
 
-                <Slider x:Name="Speed_fps" Maximum="25" Minimum="2" ValueChanged="Speed_fps_ValueChanged"/>
+                <Slider x:Name="Speed_fps" 
+                        Maximum="25" 
+                        Minimum="2"
+                        ValueChanged="Speed_fps_ValueChanged"
+                        Value="{Binding Speed_FPS}"/>
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Speed (1-5): " FontSize="Medium"/>
@@ -65,7 +82,11 @@
                            BindingContext="{Reference Name=Speed_scale}"/>
                 </StackLayout>
 
-                <Slider x:Name="Speed_scale" Maximum="5" Minimum="1" ValueChanged="Speed_scale_ValueChanged"/>
+                <Slider x:Name="Speed_scale" 
+                        Maximum="5"
+                        Minimum="1" 
+                        ValueChanged="Speed_scale_ValueChanged"
+                        Value="{Binding Speed_Scale}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Shifts gears: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>

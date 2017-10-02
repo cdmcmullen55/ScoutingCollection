@@ -5,7 +5,13 @@
              Title="Report">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+            <Label Text="{Binding Team_Key}" />
+            <Label Text="{Binding Robot_Key}"/>
+            <Label Text="{Binding Drive_Train}"
+            <Label Text="{Binding CIMs_Used}"/>
+            <Label Text="{Binding Speed_FPS}"/>
+            <Label Text="{Binding Speed_Scaled}"/>
+            <Label Text="{Binding Robot_Wt}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

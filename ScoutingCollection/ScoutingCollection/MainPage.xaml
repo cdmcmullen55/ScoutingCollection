@@ -6,19 +6,17 @@
              x:Class="ScoutingCollection.MainPage">
 
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:PitScoutingViewModel x:Key="viewModel"/>
-        </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout Padding="10,20,10,20" BindingContext="{StaticResource viewModel}">
+        <StackLayout Padding="10,20,10,20">
             <StackLayout Orientation="Horizontal"
                          Padding="20,0,20,0"
                          VerticalOptions="CenterAndExpand">
                 <Label Text="Team Number:" VerticalOptions="Center" FontSize="Medium"/>
                 <Entry x:Name="Team"
                        Placeholder="i.e. 5472"
+                       Text="{Binding Team, Mode=OneWayToSource}"
                        TextChanged="Team_TextChanged"/>
             </StackLayout>
 

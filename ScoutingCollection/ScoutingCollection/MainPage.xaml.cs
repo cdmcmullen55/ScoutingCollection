@@ -12,6 +12,7 @@ namespace ScoutingCollection
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new PitScoutingViewModel();
 
             Team.Text = null;
             Match.Text = null;
@@ -22,9 +23,11 @@ namespace ScoutingCollection
         async void PitScout_Clicked(object sender, EventArgs e)
         {
             var button = sender as Button;
-            button.Command.Execute(button.CommandParameter);
+            //button.Command.Execute(button.CommandParameter);
 
-            await Navigation.PushModalAsync(new PitScouting());
+            var pitscouting = new PitScouting();
+            pitscouting.BindingContext = this.BindingContext;
+            await Navigation.PushModalAsync(pitscouting);
         }
 
         private void MatchScout_Clicked(object sender, EventArgs e)
