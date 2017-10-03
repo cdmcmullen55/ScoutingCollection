@@ -79,7 +79,7 @@ namespace ScoutingCollection
             {
                 if (speed_scaled != value)
                 {
-                    speed_scaled = value;
+                    var speed_scaled = value;
                     OnPropertyChanged("Speed_Scaled");
                 }
             }
@@ -102,6 +102,22 @@ namespace ScoutingCollection
             get
             {
                 return robot_wt;
+            }
+        }
+
+        public int Ball_Cap
+        {
+            set
+            {
+                if (ball_cap != value)
+                {
+                    ball_cap = value;
+                    OnPropertyChanged("Ball_Cap");
+                }
+            }
+            get
+            {
+                return ball_cap;
             }
         }
 
@@ -134,6 +150,22 @@ namespace ScoutingCollection
             get
             {
                 return gears;
+            }
+        }
+
+        public bool Shift_Gears
+        {
+            set
+            {
+                if (shift_gears != value)
+                {
+                    shift_gears = value;
+                    OnPropertyChanged("Shift_Gears");
+                }
+            }
+            get
+            {
+                return shift_gears;
             }
         }
 
@@ -193,22 +225,6 @@ namespace ScoutingCollection
         private void SetRobotKey()
         {
             this.Robot_Key = team_key + "_2017";
-        }
-
-        public int CimsUsed
-        {
-            set
-            {
-                if(cims_used != value)
-                {
-                    cims_used = value;
-                    OnPropertyChanged("CimsUsed");
-                }
-            }
-            get
-            {
-                return cims_used;
-            }
         }
 
         protected void OnPropertyChanged(string propertyName)

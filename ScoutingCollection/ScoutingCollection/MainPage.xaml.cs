@@ -22,9 +22,6 @@ namespace ScoutingCollection
 
         async void PitScout_Clicked(object sender, EventArgs e)
         {
-            var button = sender as Button;
-            //button.Command.Execute(button.CommandParameter);
-
             var pitscouting = new PitScouting();
             pitscouting.BindingContext = this.BindingContext;
             await Navigation.PushModalAsync(pitscouting);
@@ -50,6 +47,11 @@ namespace ScoutingCollection
         }
 
         private void Match_Completed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReportList_Clicked(object sender, EventArgs e)
         {
 
         }

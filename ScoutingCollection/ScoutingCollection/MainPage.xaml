@@ -35,8 +35,6 @@
             <Button x:Name="PitScout" 
                     Text="Pit Scout Team" 
                     Clicked="PitScout_Clicked"
-                    Command="{Binding SaveTeamCommand}"
-                    CommandParameter="{Binding Source={x:Reference Team}, Path=Text}"
                     FontSize="Medium"
                     VerticalOptions="CenterAndExpand">
                 <Button.CommandParameter>
@@ -49,6 +47,11 @@
                     FontSize="Medium"
                     VerticalOptions="CenterAndExpand"/>
 
+            <Button x:Name="ReportList"
+                    Text="Show Report List"
+                    Clicked="ReportList_Clicked"
+                    FontSize="Medium"
+                    VerticalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
