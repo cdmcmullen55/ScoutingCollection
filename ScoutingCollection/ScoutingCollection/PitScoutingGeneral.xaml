@@ -102,21 +102,24 @@
                     <Label Text="Vision: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="Vision" 
                             Toggled="Vision_Toggled"
-                            HorizontalOptions="EndAndExpand"/>
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding Vision, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Active Gear Dropoff: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="Active_gear" 
                             Toggled="Active_gear_Toggled"
-                            HorizontalOptions="EndAndExpand"/>
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding Active_Gear, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Ground Gear Pickup: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="Ground_gear" 
                             Toggled="Ground_gear_Toggled"
-                            HorizontalOptions="EndAndExpand"/>
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding Ground_Gear, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -126,7 +129,11 @@
                            BindingContext="{Reference Name=Ground_gear_scale}"/>
                 </StackLayout>
 
-                <Slider x:Name="Ground_gear_scale" Maximum="5" Minimum="1" ValueChanged="Ground_scale_ValueChanged"/>
+                <Slider x:Name="Ground_gear_scale" 
+                        Maximum="5" 
+                        Minimum="1" 
+                        ValueChanged="Ground_scale_ValueChanged"
+                        Value="{Binding Ground_Gear_Scale, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Gear Run Time known? " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
@@ -142,7 +149,11 @@
                            BindingContext="{Reference Name=Gear_run_sec}"/>
                 </StackLayout>
 
-                <Slider x:Name="Gear_run_sec" Maximum="25" Minimum="5" ValueChanged="Gear_run_sec_ValueChanged"/>
+                <Slider x:Name="Gear_run_sec" 
+                        Maximum="25" 
+                        Minimum="5" 
+                        ValueChanged="Gear_run_sec_ValueChanged"
+                        Value="{Binding Run_Sec, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Gear Run (1-5): " FontSize="Medium"/>
@@ -151,16 +162,24 @@
                            BindingContext="{Reference Name=Gear_run_scale}"/>
                 </StackLayout>
 
-                <Slider x:Name="Gear_run_scale" Maximum="5" Minimum="1" ValueChanged="Gear_run_scale_ValueChanged"/>
+                <Slider x:Name="Gear_run_scale" 
+                        Maximum="5" 
+                        Minimum="1" 
+                        ValueChanged="Gear_run_scale_ValueChanged"
+                        Value="{Binding Run_Scale, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Ground Ball Pickup: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="Ground_ball_pickup"
                             Toggled="Ground_ball_pickup_Toggled"
-                            HorizontalOptions="EndAndExpand"/>
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding Ground_Ball, Mode=OneWayToSource}"/>
                 </StackLayout>
 
-                <Picker x:Name="Strategy" Title="Strategy" SelectedIndexChanged="Strategy_SelectedIndexChanged">
+                <Picker x:Name="Strategy" 
+                        Title="Strategy" 
+                        SelectedIndexChanged="Strategy_SelectedIndexChanged"
+                        SelectedItem="{Binding Strategy, Mode=OneWayToSource}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Offense</x:String>

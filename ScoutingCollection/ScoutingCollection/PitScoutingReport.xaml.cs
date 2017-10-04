@@ -17,9 +17,9 @@ namespace ScoutingCollection
 			InitializeComponent ();
 		}
 
-        private void CancelPitScout_Clicked(object sender, EventArgs e)
+        async void CancelPitScout_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopModalAsync();
         }
 
         private void SaveReport_Clicked(object sender, EventArgs e)

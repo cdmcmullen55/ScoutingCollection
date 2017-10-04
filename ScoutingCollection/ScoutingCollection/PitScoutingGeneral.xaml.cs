@@ -39,14 +39,12 @@ namespace ScoutingCollection
 
         private void UsesFuel_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["pitUsesFuel"] = UsesFuel.IsToggled;
             BallCap.IsEnabled = UsesFuel.IsToggled;
             Ground_ball_pickup.IsEnabled = UsesFuel.IsToggled;
         }
 
         private void UsesGears_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["pitUsesGears"] = UsesGears.IsToggled;
             Active_gear.IsEnabled = UsesGears.IsToggled;
             Ground_gear.IsEnabled = UsesGears.IsToggled;
             Gear_time_known.IsEnabled = UsesGears.IsToggled;
@@ -54,22 +52,18 @@ namespace ScoutingCollection
 
         private void Shifts_gears_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["pitShifts_gears"] = Shifts_gears.IsToggled;
         }
 
         private void Vision_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["pitVision"] = Vision.IsToggled;
         }
 
         private void Active_gear_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["pitActive_gear"] = Active_gear.IsToggled;
         }
 
         private void Ground_gear_Toggled(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["pitGround_gear"] = Ground_gear.IsToggled;
             Ground_gear_scale.IsEnabled = Ground_gear.IsToggled;
         }
 

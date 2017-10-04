@@ -11,7 +11,7 @@ namespace ScoutingCollection
 {
     class PitScoutingViewModel : INotifyPropertyChanged
     {
-        int team, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, run_sec, run_scale, strategy, auto_ball, tele_gears, 
+        int team, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, ground_gear_scale, run_sec, run_scale, strategy, auto_ball, tele_gears, 
             tele_balls, acc_scale, climb_time;
         bool fuel, gears, shift_gears, vision, active_gear, ground_gear, ground_ball, baseline, auto_gear, auto_low, tele_low,
             climb;
@@ -121,6 +121,70 @@ namespace ScoutingCollection
             }
         }
 
+        public int Ground_Gear_Scale
+        {
+            set
+            {
+                if(ground_gear_scale != value)
+                {
+                    ground_gear_scale = value;
+                    OnPropertyChanged("Ground_Gear_Scale");
+                }
+            }
+            get
+            {
+                return ground_gear_scale;
+            }
+        }
+
+        public int Run_Sec
+        {
+            set
+            {
+                if (run_sec != value)
+                {
+                    run_sec = value;
+                    OnPropertyChanged("Run_Sec");
+                }
+            }
+            get
+            {
+                return run_sec;
+            }
+        }
+
+        public int Run_Scale
+        {
+            set
+            {
+                if (run_scale != value)
+                {
+                    run_scale = value;
+                    OnPropertyChanged("Run_Scale");
+                }
+            }
+            get
+            {
+                return run_scale;
+            }
+        }
+
+        public string Strategy
+        {
+            set
+            {
+                if(strategy != ParseStrategy(value) && ParseStrategy(value) != -1)
+                {
+                    strategy = ParseStrategy(value);
+                    OnPropertyChanged("Strategy");
+                }
+            }
+            get
+            {
+                return ParseStrategy(strategy);
+            }
+        }
+
         public bool Fuel
         {
             set
@@ -166,6 +230,70 @@ namespace ScoutingCollection
             get
             {
                 return shift_gears;
+            }
+        }
+
+        public bool Vision
+        {
+            set
+            {
+                if(vision != value)
+                {
+                    vision = value;
+                    OnPropertyChanged("Vision");
+                }
+            }
+            get
+            {
+                return vision;
+            }
+        }
+
+        public bool Active_Gear
+        {
+            set
+            {
+                if(active_gear != value)
+                {
+                    active_gear = value;
+                    OnPropertyChanged("Active_Gear");
+                }
+            }
+            get
+            {
+                return active_gear;
+            }
+        }
+
+        public bool Ground_Gear
+        {
+            set
+            {
+                if (ground_gear != value)
+                {
+                    ground_gear = value;
+                    OnPropertyChanged("Ground_Gear");
+                }
+            }
+            get
+            {
+                return ground_gear;
+            }
+        }
+
+        public bool Ground_Ball
+        {
+            set
+            {
+                if(ground_ball != value)
+                {
+                    ground_ball = value;
+                    OnPropertyChanged("Ground_Ball");
+                }
+            }
+            get
+            {
+                return ground_ball;
             }
         }
 
@@ -225,6 +353,28 @@ namespace ScoutingCollection
         private void SetRobotKey()
         {
             this.Robot_Key = team_key + "_2017";
+        }
+
+        private int ParseStrategy(string strat)
+        {
+            if (strat == null)
+                return -1;
+            if (strat.Equals("Offense"))
+                return 0;
+            else if (strat.Equals("Defense"))
+                return 1;
+            else
+                return 2;
+        }
+
+        private string ParseStrategy(int strat)
+        {
+            if (strat == 0)
+                return "Offense";
+            else if (strat == 1)
+                return "Defense";
+            else
+                return "Both";
         }
 
         protected void OnPropertyChanged(string propertyName)
