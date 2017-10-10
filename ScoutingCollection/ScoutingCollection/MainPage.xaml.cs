@@ -9,6 +9,8 @@ namespace ScoutingCollection
 {
     public partial class MainPage : ContentPage
     {
+        MainViewModel mvm;
+
         public MainPage()
         {
             InitializeComponent();
@@ -22,13 +24,14 @@ namespace ScoutingCollection
         public MainPage(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            BindingContext = mainViewModel;
+            mvm = mainViewModel;
+            BindingContext = mvm;
         }
 
         async void PitScout_Clicked(object sender, EventArgs e)
         {
-            var pitVM = new PitScoutingViewModel();
-            var pitscouting = new PitScouting();
+            var psvm = new PitScoutingViewModel();
+            var pitscouting = new PitScouting(mvm, psvm);
             pitscouting.BindingContext = this.BindingContext;
             await Navigation.PushModalAsync(pitscouting);
         }

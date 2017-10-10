@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace ScoutingCollection
 {
-    class PitScoutingViewModel : INotifyPropertyChanged
+    public class PitScoutingViewModel : INotifyPropertyChanged
     {
         PitScout report = new PitScout();
 
