@@ -1,21 +1,26 @@
-﻿using System;
+﻿using PCLStorage;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Serialization;
 using Xamarin.Forms;
 
 namespace ScoutingCollection
 {
     class PitScoutingViewModel : INotifyPropertyChanged
     {
-        int team, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, ground_gear_scale, run_sec, run_scale, strategy, auto_ball, tele_gears, 
-            tele_balls, acc_scale, climb_time;
-        bool fuel, gears, shift_gears, vision, active_gear, ground_gear, ground_ball, baseline, auto_gear, auto_low, tele_low,
-            climb;
-        String team_key, robot_key, drive_train, start_pos, comments;
+        PitScout report = new PitScout();
+
+        //int team, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, ground_gear_scale, run_sec, run_scale, strategy, auto_ball, tele_gears, 
+            //tele_balls, acc_scale, climb_time;
+        //bool fuel, gears, shift_gears, vision, active_gear, ground_gear, ground_ball, baseline, auto_gear, auto_low, tele_low,
+            //climb;
+        //String team_key, robot_key, drive_train, start_pos, comments, file_name;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -27,17 +32,18 @@ namespace ScoutingCollection
         {
             set
             {
-                if(team != value)
+                if(report.team != value)
                 {
-                    team = value;
+                    report.team = value;
                     OnPropertyChanged("Team");
                     SetTeamKey();
                     SetRobotKey();
+                    SetFile_Name();
                 }
             }
             get
             {
-                return team;
+                return report.team;
             }
         }
 
@@ -45,15 +51,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (cims_used != value)
+                if (report.cims_used != value)
                 {
-                    cims_used = value;
+                    report.cims_used = value;
                     OnPropertyChanged("CIMs_Used");
                 }
             }
             get
             {
-                return cims_used;
+                return report.cims_used;
             }
         }
 
@@ -61,15 +67,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (speed_fps != value)
+                if (report.speed_fps != value)
                 {
-                    speed_fps = value;
+                    report.speed_fps = value;
                     OnPropertyChanged("Speed_FPS");
                 }
             }
             get
             {
-                return speed_fps;
+                return report.speed_fps;
             }
         }
 
@@ -77,15 +83,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (speed_scaled != value)
+                if (report.speed_scaled != value)
                 {
-                    speed_scaled = value;
+                    report.speed_scaled = value;
                     OnPropertyChanged("Speed_Scaled");
                 }
             }
             get
             {
-                return speed_scaled;
+                return report.speed_scaled;
             }
         }
 
@@ -93,15 +99,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (robot_wt != value)
+                if (report.robot_wt != value)
                 {
-                    robot_wt = value;
+                    report.robot_wt = value;
                     OnPropertyChanged("Robot_Wt");
                 }
             }
             get
             {
-                return robot_wt;
+                return report.robot_wt;
             }
         }
 
@@ -109,15 +115,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (ball_cap != value)
+                if (report.ball_cap != value)
                 {
-                    ball_cap = value;
+                    report.ball_cap = value;
                     OnPropertyChanged("Ball_Cap");
                 }
             }
             get
             {
-                return ball_cap;
+                return report.ball_cap;
             }
         }
 
@@ -125,15 +131,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(ground_gear_scale != value)
+                if(report.ground_gear_scale != value)
                 {
-                    ground_gear_scale = value;
+                    report.ground_gear_scale = value;
                     OnPropertyChanged("Ground_Gear_Scale");
                 }
             }
             get
             {
-                return ground_gear_scale;
+                return report.ground_gear_scale;
             }
         }
 
@@ -141,15 +147,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (run_sec != value)
+                if (report.run_sec != value)
                 {
-                    run_sec = value;
+                    report.run_sec = value;
                     OnPropertyChanged("Run_Sec");
                 }
             }
             get
             {
-                return run_sec;
+                return report.run_sec;
             }
         }
 
@@ -157,15 +163,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (run_scale != value)
+                if (report.run_scale != value)
                 {
-                    run_scale = value;
+                    report.run_scale = value;
                     OnPropertyChanged("Run_Scale");
                 }
             }
             get
             {
-                return run_scale;
+                return report.run_scale;
             }
         }
 
@@ -173,15 +179,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(strategy != ParseStrategy(value) && ParseStrategy(value) != -1)
+                if(report.strategy != ParseStrategy(value) && ParseStrategy(value) != -1)
                 {
-                    strategy = ParseStrategy(value);
+                    report.strategy = ParseStrategy(value);
                     OnPropertyChanged("Strategy");
                 }
             }
             get
             {
-                return ParseStrategy(strategy);
+                return ParseStrategy(report.strategy);
             }
         }
 
@@ -189,15 +195,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (fuel != value)
+                if (report.fuel != value)
                 {
-                    fuel = value;
+                    report.fuel = value;
                     OnPropertyChanged("Fuel");
                 }
             }
             get
             {
-                return fuel;
+                return report.fuel;
             }
         }
 
@@ -205,15 +211,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (gears != value)
+                if (report.gears != value)
                 {
-                    gears = value;
+                    report.gears = value;
                     OnPropertyChanged("Gears");
                 }
             }
             get
             {
-                return gears;
+                return report.gears;
             }
         }
 
@@ -221,15 +227,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (shift_gears != value)
+                if (report.shift_gears != value)
                 {
-                    shift_gears = value;
+                    report.shift_gears = value;
                     OnPropertyChanged("Shift_Gears");
                 }
             }
             get
             {
-                return shift_gears;
+                return report.shift_gears;
             }
         }
 
@@ -237,15 +243,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(vision != value)
+                if(report.vision != value)
                 {
-                    vision = value;
+                    report.vision = value;
                     OnPropertyChanged("Vision");
                 }
             }
             get
             {
-                return vision;
+                return report.vision;
             }
         }
 
@@ -253,15 +259,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(active_gear != value)
+                if(report.active_gear != value)
                 {
-                    active_gear = value;
+                    report.active_gear = value;
                     OnPropertyChanged("Active_Gear");
                 }
             }
             get
             {
-                return active_gear;
+                return report.active_gear;
             }
         }
 
@@ -269,15 +275,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (ground_gear != value)
+                if (report.ground_gear != value)
                 {
-                    ground_gear = value;
+                    report.ground_gear = value;
                     OnPropertyChanged("Ground_Gear");
                 }
             }
             get
             {
-                return ground_gear;
+                return report.ground_gear;
             }
         }
 
@@ -285,15 +291,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(ground_ball != value)
+                if(report.ground_ball != value)
                 {
-                    ground_ball = value;
+                    report.ground_ball = value;
                     OnPropertyChanged("Ground_Ball");
                 }
             }
             get
             {
-                return ground_ball;
+                return report.ground_ball;
             }
         }
 
@@ -301,15 +307,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(baseline != value)
+                if (report.baseline != value)
                 {
-                    baseline = value;
+                    report.baseline = value;
                     OnPropertyChanged("Baseline");
                 }
             }
             get
             {
-                return baseline;
+                return report.baseline;
             }
         }
 
@@ -317,15 +323,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (auto_gear != value)
+                if (report.auto_gear != value)
                 {
-                    auto_gear = value;
+                    report.auto_gear = value;
                     OnPropertyChanged("Auto");
                 }
             }
             get
             {
-                return auto_gear;
+                return report.auto_gear;
             }
         }
 
@@ -333,15 +339,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (team_key != value)
+                if (report.team_key != value)
                 {
-                    team_key = value;
+                    report.team_key = value;
                     OnPropertyChanged("Team_Key");
                 }
             }
             get
             {
-                return team_key;
+                return report.team_key;
             }
         }
 
@@ -349,15 +355,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if(robot_key != value)
+                if(report.robot_key != value)
                 {
-                    robot_key = value;
+                    report.robot_key = value;
                     OnPropertyChanged("Robot_Key");
                 }
             }
             get
             {
-                return robot_key;
+                return report.robot_key;
             }
         }
 
@@ -365,15 +371,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if (drive_train != value)
+                if (report.drive_train != value)
                 {
-                    drive_train = value;
+                    report.drive_train = value;
                     OnPropertyChanged("Drive_Train");
                 }
             }
             get
             {
-                return drive_train;
+                return report.drive_train;
             }
         }
 
@@ -381,22 +387,47 @@ namespace ScoutingCollection
         {
             set
             {
-                if(start_pos != value)
+                if(report.start_pos != value)
                 {
-                    start_pos = value;
+                    report.start_pos = value;
                     OnPropertyChanged("Start_Pos");
                 }
+            }
+            get
+            {
+                return report.start_pos;
+            }
+        }
+
+        public String File_Name
+        {
+            set
+            {
+                if(report.file_name != value)
+                {
+                    report.file_name = value;
+                    OnPropertyChanged("File_Name");
+                }
+            }
+            get
+            {
+                return report.file_name;
             }
         }
 
         private void SetTeamKey()
         {
-            this.Team_Key = "frc"+team;
+            this.Team_Key = "frc"+report.team;
         }
 
         private void SetRobotKey()
         {
-            this.Robot_Key = team_key + "_2017";
+            this.Robot_Key = report.team_key + "_2017";
+        }
+
+        private void SetFile_Name()
+        {
+            this.File_Name = "Pit_"+report.team;
         }
 
         private int ParseStrategy(string strat)
@@ -428,6 +459,11 @@ namespace ScoutingCollection
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void SaveReport()
+        {
+            
         }
     }
 }

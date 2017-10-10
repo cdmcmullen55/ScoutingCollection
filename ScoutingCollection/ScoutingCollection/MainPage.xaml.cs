@@ -19,9 +19,15 @@ namespace ScoutingCollection
             PitScout.IsEnabled = false;
             MatchScout.IsEnabled = false;
         }
+        public MainPage(MainViewModel mainViewModel)
+        {
+            InitializeComponent();
+            BindingContext = mainViewModel;
+        }
 
         async void PitScout_Clicked(object sender, EventArgs e)
         {
+            var pitVM = new PitScoutingViewModel();
             var pitscouting = new PitScouting();
             pitscouting.BindingContext = this.BindingContext;
             await Navigation.PushModalAsync(pitscouting);

@@ -9,11 +9,13 @@ namespace ScoutingCollection
 {
     public partial class App : Application
     {
+        MainViewModel mainViewModel;
+
         public App()
         {
             InitializeComponent();
-
-            MainPage = new ScoutingCollection.MainPage();
+            mainViewModel = new MainViewModel();
+            MainPage = new ScoutingCollection.MainPage(mainViewModel);
         }
 
         protected override void OnStart()
