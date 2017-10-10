@@ -16,5 +16,10 @@ namespace ScoutingCollection
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void Start_Pos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -79,7 +79,7 @@ namespace ScoutingCollection
             {
                 if (speed_scaled != value)
                 {
-                    var speed_scaled = value;
+                    speed_scaled = value;
                     OnPropertyChanged("Speed_Scaled");
                 }
             }
@@ -297,6 +297,38 @@ namespace ScoutingCollection
             }
         }
 
+        public bool Baseline
+        {
+            set
+            {
+                if(baseline != value)
+                {
+                    baseline = value;
+                    OnPropertyChanged("Baseline");
+                }
+            }
+            get
+            {
+                return baseline;
+            }
+        }
+
+        public bool Auto_Gear
+        {
+            set
+            {
+                if (auto_gear != value)
+                {
+                    auto_gear = value;
+                    OnPropertyChanged("Auto");
+                }
+            }
+            get
+            {
+                return auto_gear;
+            }
+        }
+
         public String Team_Key
         {
             set
@@ -342,6 +374,18 @@ namespace ScoutingCollection
             get
             {
                 return drive_train;
+            }
+        }
+
+        public String Start_Pos
+        {
+            set
+            {
+                if(start_pos != value)
+                {
+                    start_pos = value;
+                    OnPropertyChanged("Start_Pos");
+                }
             }
         }
 
