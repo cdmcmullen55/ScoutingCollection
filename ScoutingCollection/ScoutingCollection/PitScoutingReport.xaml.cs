@@ -24,7 +24,7 @@ namespace ScoutingCollection
 
         private void SaveReport_Clicked(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

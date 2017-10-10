@@ -23,6 +23,7 @@
                 <Button x:Name="SaveReport"
                         Text="Save Report"
                         FontSize="Medium"
+                        Command="{Binding SerializeReport}"
                         Clicked="SaveReport_Clicked"
                         HorizontalOptions="EndAndExpand"/>
             </StackLayout>
