@@ -42,6 +42,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="MatchScout.cs" />
     <Compile Include="PitScout.cs" />
     <Compile Include="PitScouting.xaml.cs">
       <DependentUpon>PitScouting.xaml</DependentUpon>

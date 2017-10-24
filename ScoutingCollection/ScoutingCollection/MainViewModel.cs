@@ -9,7 +9,7 @@ namespace ScoutingCollection
     public class MainViewModel
     {
         List<PitScout> pit_reports;
-        //List<MatchScout> match_reports;
+        List<MatchScout> match_reports;
         int team;
     }
 }
