@@ -11,5 +11,8 @@ namespace ScoutingCollection
         List<PitScout> pit_reports;
         List<MatchScout> match_reports;
         int team;
+        bool currentIsMatch;
+        PitScoutingViewModel currentPit;
+        MatchScoutingViewModel currentMatch;
     }
 }
