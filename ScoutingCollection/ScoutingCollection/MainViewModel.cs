@@ -8,8 +8,7 @@ namespace ScoutingCollection
 {
     public class MainViewModel
     {
-        List<PitScout> pit_reports;
-        List<MatchScout> match_reports;
+        List<Scout> reports;
         int team;
         bool currentIsMatch;
         PitScoutingViewModel currentPit;

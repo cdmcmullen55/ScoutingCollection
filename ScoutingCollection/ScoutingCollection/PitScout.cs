@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScoutingCollection
 {
-    class PitScout
+    class PitScout : Scout
     {
         public int team, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, ground_gear_scale, run_sec, run_scale, strategy, auto_ball, tele_gears,
             tele_balls, acc_scale, climb_time;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScoutingCollection
 {
-	class MatchScout
+	class MatchScout : Scout
 	{
 		public int team, match_number, auto_gear_cent, auto_gear_load, auto_gear_boil, auto_grnd_gear, auto_load_gear,
 			auto_g_c_att, auto_g_l_att, auto_g_b_att, auto_gear_drop, tele_gear_drop, tele_gear_cent, tele_gear_load,

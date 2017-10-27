@@ -32,7 +32,7 @@ namespace ScoutingCollection
         {
             var psvm = new PitScoutingViewModel();
             var pitscouting = new PitScouting(mvm, psvm);
-            pitscouting.BindingContext = this.BindingContext;
+            pitscouting.BindingContext = psvm;
             await Navigation.PushModalAsync(pitscouting);
         }
 
