@@ -13,5 +13,11 @@ namespace ScoutingCollection
         public bool fuel, gears, shift_gears, vision, active_gear, ground_gear, ground_ball, baseline, auto_gear, auto_low, tele_low,
             climb;
         public String team_key, robot_key, drive_train, start_pos, comments, file_name;
+
+        public PitScout(int team_num)
+        {
+            team = team_num;
+            is_match = false;
+        }
     }
 }

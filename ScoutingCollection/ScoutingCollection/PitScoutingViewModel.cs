@@ -13,7 +13,7 @@ namespace ScoutingCollection
 {
     public class PitScoutingViewModel : INotifyPropertyChanged
     {
-        PitScout report = new PitScout();
+        PitScout report;
 
         //int team, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, ground_gear_scale, run_sec, run_scale, strategy, auto_ball, tele_gears, 
             //tele_balls, acc_scale, climb_time;
@@ -25,6 +25,12 @@ namespace ScoutingCollection
 
         public PitScoutingViewModel()
         {
+            report = new PitScout(0000);
+        }
+
+        public PitScoutingViewModel(int team_number)
+        {
+            report = new PitScout(team_number);
         }
 
         public int Team
