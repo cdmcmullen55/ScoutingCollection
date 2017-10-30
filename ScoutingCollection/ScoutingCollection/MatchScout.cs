@@ -13,11 +13,10 @@ namespace ScoutingCollection
 			tele_gear_boil, tele_grnd_pckp, tele_load_pckp, tkoff_speed, dfnse_rate;
 		public bool baseline, auto_none, auto_break, tele_none, tele_break, tkoff_att, tkoff_succ, win, rotors, pascals;
 		public String t_m_key, comp_key, team_key, comments;
-        public bool isMatch = true;
-
-        public MatchScout(int team_num)
+        public MatchScout(int team_num, int match_num)
         {
             team = team_num;
+            match_number = match_num;
             is_match = true;
         }
 	}

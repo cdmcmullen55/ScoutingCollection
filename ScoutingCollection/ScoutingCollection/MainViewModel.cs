@@ -25,7 +25,7 @@ namespace ScoutingCollection
            PitScoutCommand = new Command(
            execute: () =>
            {
-               currentPit = new PitScout(team);
+               currentPit = new PitScoutingViewModel(team);
                RefreshCanExecutes();
            },
            canExecute: () =>
