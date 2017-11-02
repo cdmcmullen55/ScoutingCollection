@@ -9,7 +9,8 @@ namespace ScoutingCollection
     public abstract class Scout
     {
         public int team;
-        public bool is_match;
+        public bool is_match, baseline;
+        public String team_key, comments;
 
         public int getTeam()
         {

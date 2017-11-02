@@ -13,8 +13,7 @@ namespace ScoutingCollection
         List<Scout> reports;
         int team;
         bool currentIsMatch;
-        PitScoutingViewModel currentPit;
-        MatchScoutingViewModel currentMatch;
+        ScoutVM currentReport;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -25,7 +24,7 @@ namespace ScoutingCollection
            PitScoutCommand = new Command(
            execute: () =>
            {
-               currentPit = new PitScoutingViewModel(team);
+               currentReport = new PitScoutingViewModel(team);
                RefreshCanExecutes();
            },
            canExecute: () =>

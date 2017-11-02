@@ -35,15 +35,15 @@ namespace ScoutingCollection
         {
             set
             {
-                if ((report as PitScout).team_key != value)
+                if (report.team_key != value)
                 {
-                    (report as PitScout).team_key = value;
+                    report.team_key = value;
                     OnPropertyChanged("Team_Key");
                 }
             }
             get
             {
-                return (report as PitScout).team_key;
+                return report.team_key;
             }
         }
 
@@ -65,12 +65,12 @@ namespace ScoutingCollection
 
         private void SetTeamKey()
         {
-            this.Team_Key = "frc" + (report as PitScout).team;
+            this.Team_Key = "frc" + report.team;
         }
 
         private void SetRobotKey()
         {
-            this.Robot_Key = (report as PitScout).team_key + "_2017";
+            this.Robot_Key = report.team_key + "_2017";
         }
 
         public bool getType()
