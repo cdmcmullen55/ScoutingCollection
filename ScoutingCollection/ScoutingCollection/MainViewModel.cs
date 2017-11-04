@@ -11,13 +11,14 @@ namespace ScoutingCollection
     public class MainViewModel
     {
         List<Scout> reports;
-        int team;
+        int team, match;
         bool currentIsMatch;
         ScoutVM currentReport;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public System.Windows.Input.ICommand PitScoutCommand { private set; get; }
+        public System.Windows.Input.ICommand MatchScoutCommand { private set; get; }
 
         public MainViewModel()
         {
@@ -46,6 +47,22 @@ namespace ScoutingCollection
             get
             {
                 return team;
+            }
+        }
+
+        public int Match
+        {
+            set
+            {
+                if (match != value)
+                {
+                    match = value;
+                    OnPropertyChanged("Match");
+                }
+            }
+            get
+            {
+                return match;
             }
         }
 
