@@ -13,16 +13,16 @@ namespace ScoutingCollection
         List<Scout> reports;
         int team, match;
         bool currentIsMatch;
-        ScoutVM currentReport;
+        public ScoutVM currentReport;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public System.Windows.Input.ICommand PitScoutCommand { private set; get; }
-        public System.Windows.Input.ICommand MatchScoutCommand { private set; get; }
+        //public System.Windows.Input.ICommand PitScoutCommand { private set; get; }
+        //public System.Windows.Input.ICommand MatchScoutCommand { private set; get; }
 
         public MainViewModel()
         {
-           PitScoutCommand = new Command(
+           /* PitScoutCommand = new Command(
            execute: () =>
            {
                currentReport = new PitScoutingViewModel(team);
@@ -42,7 +42,7 @@ namespace ScoutingCollection
             canExecute: () =>
             {
                 return (match != 0 && team != 0);
-            });
+            }); */
         }
 
         public int Team
@@ -77,10 +77,16 @@ namespace ScoutingCollection
             }
         }
 
-        void RefreshCanExecutes()
+        public void InitPitScout()
+        {
+            currentIsMatch = false;
+            currentReport = new PitScoutingViewModel(team);
+        }
+
+        /* void RefreshCanExecutes()
         {
             ((Command)PitScoutCommand).ChangeCanExecute();
-        }
+        } */
 
         protected void OnPropertyChanged(string propertyName)
         {

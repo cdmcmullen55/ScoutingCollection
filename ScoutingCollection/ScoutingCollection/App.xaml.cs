@@ -14,8 +14,7 @@ namespace ScoutingCollection
         public App()
         {
             InitializeComponent();
-            mainViewModel = new MainViewModel();
-            MainPage = new ScoutingCollection.MainPage(mainViewModel);
+            MainPage = new ScoutingCollection.MainPage();
         }
 
         protected override void OnStart()
