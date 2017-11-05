@@ -16,6 +16,7 @@
                 <Label Text="Team Number:" VerticalOptions="Center" FontSize="Medium"/>
                 <Entry x:Name="Team"
                        Placeholder="i.e. 5472"
+                       Keyboard="Numeric"
                        Text="{Binding Team, Mode=OneWayToSource}"
                        TextChanged="Team_TextChanged"/>
             </StackLayout>
@@ -26,6 +27,7 @@
                 <Label Text="Match Number:" VerticalOptions="Center" FontSize="Medium"/>
                 <Entry x:Name="Match"
                        Placeholder="Ignore for pit scouting"
+                       Text="{Binding Match, Mode=OneWayToSource}"
                        TextChanged="Match_TextChanged"
                        Completed="Match_Completed"
                        VerticalOptions="Center"

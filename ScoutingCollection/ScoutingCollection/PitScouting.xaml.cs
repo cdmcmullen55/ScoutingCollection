@@ -13,7 +13,7 @@ namespace ScoutingCollection
     public partial class PitScouting : TabbedPage
     {
         public MainViewModel mvm;
-        public PitScoutingViewModel psvm;
+        //public PitScoutingViewModel psvm;
 
         public static String team_number;
 
@@ -21,11 +21,12 @@ namespace ScoutingCollection
         {
             InitializeComponent();
         }
-        public PitScouting(MainViewModel mvm, PitScoutingViewModel psvm)
+        public PitScouting(MainViewModel mvm)
         {
             this.mvm = mvm;
-            this.psvm = psvm;
-            this.BindingContext = psvm;
+            //this.psvm = psvm;
+            this.BindingContext = (mvm.currentReport as PitScoutingViewModel);
+            InitializeComponent();
         }
     }
 }

@@ -21,5 +21,10 @@ namespace ScoutingCollection
         {
 
         }
+
+        private void does_fuel_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
     }
 }
