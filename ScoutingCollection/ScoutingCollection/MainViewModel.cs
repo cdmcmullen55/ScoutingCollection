@@ -32,6 +32,17 @@ namespace ScoutingCollection
            {
                return(team != 0);
            });
+
+            MatchScoutCommand = new Command(
+            execute: () =>
+            {
+                currentReport = new MatchVM(team, match);
+                RefreshCanExecutes();
+            },
+            canExecute: () =>
+            {
+                return (match != 0 && team != 0);
+            });
         }
 
         public int Team

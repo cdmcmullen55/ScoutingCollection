@@ -14,19 +14,19 @@ namespace ScoutingCollection
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new PitScoutingViewModel();
+            BindingContext = new MainViewModel();
 
             Team.Text = null;
             Match.Text = null;
             PitScout.IsEnabled = false;
             MatchScout.IsEnabled = false;
         }
-        public MainPage(MainViewModel mainViewModel)
+        /*public MainPage(MainViewModel mainViewModel)
         {
             InitializeComponent();
             mvm = mainViewModel;
             BindingContext = mvm;
-        }
+        }*/
 
         async void PitScout_Clicked(object sender, EventArgs e)
         {

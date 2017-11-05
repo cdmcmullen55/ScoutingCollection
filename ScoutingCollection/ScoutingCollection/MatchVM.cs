@@ -8,7 +8,7 @@ namespace ScoutingCollection
 {
     public class MatchVM : ScoutVM
     {
-        MatchVM(int team_num, int match_num)
+        public MatchVM(int team_num, int match_num)
         {
             report = new MatchScout(team_num, match_num);
         }
