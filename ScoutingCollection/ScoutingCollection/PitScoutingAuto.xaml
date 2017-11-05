@@ -36,10 +36,30 @@
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Baseline: " FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
                     <Switch x:Name="Baseline_Crossed"
-                            IsToggled="{Binding Fuel, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding Baseline, Mode=OneWayToSource}"/>
                 </StackLayout>
-                
-                
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Auto Fuel?" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                    <Switch x:Name="does_fuel"
+                            Toggled="does_fuel_Toggled"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Amount of Fuel:"
+                           HorizontalOptions="StartAndExpand"
+                           FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}"
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=auto_fuel}"/>
+                </StackLayout>
+
+                <Slider x:Name="auto_fuel"
+                        Maximum="50"
+                        Minimum="5"
+                        Value="{Binding Auto_Fuel, Mode=OneWayToSource}"/>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -312,7 +312,7 @@ namespace ScoutingCollection
                 if ((report as PitScout).auto_gear != value)
                 {
                     (report as PitScout).auto_gear = value;
-                    OnPropertyChanged("Auto");
+                    OnPropertyChanged("Auto_Gear");
                 }
             }
             get
@@ -322,7 +322,21 @@ namespace ScoutingCollection
         }
 
         
-
+        public int Auto_Ball
+        {
+            set
+            {
+                if((report as PitScout).auto_ball != value)
+                {
+                    (report as PitScout).auto_ball = value;
+                    OnPropertyChanged("Auto_Fuel");
+                }
+            }
+            get
+            {
+                return (report as PitScout).auto_ball;
+            }
+        }
        
 
         public String Drive_Train
