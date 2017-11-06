@@ -20,6 +20,7 @@ namespace ScoutingCollection
                 if ((report as MatchScout).match_number != value)
                 {
                     (report as MatchScout).match_number = value;
+                    TMKey = Team + "_" + MatchNumber + "_" + CompKey;
                     OnPropertyChanged("MatchNumber");
                 }
             }
@@ -369,9 +370,9 @@ namespace ScoutingCollection
         {
             set
             {
-                if ((report as MatchScout).comp_key != value)
+                if ((report as MatchScout).comp_key != CompParse(value))
                 {
-                    (report as MatchScout).comp_key = value;
+                    (report as MatchScout).comp_key = CompParse(value);
                     OnPropertyChanged("CompKey");
                 }
             }
@@ -379,6 +380,19 @@ namespace ScoutingCollection
             {
                 return (report as MatchScout).comp_key;
             }
+        }
+        public string CompParse(string comp_name)
+        {
+            if (comp_name == "Palm Beach")
+            {
+                return "2018flwp";
+            }
+            if (comp_name == "Orlando")
+            {
+                return "2018flor";
+            }
+            else
+                return "unknown";
         }
     }
 }

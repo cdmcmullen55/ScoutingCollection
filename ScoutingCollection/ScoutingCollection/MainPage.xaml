@@ -34,6 +34,18 @@
                        HorizontalOptions="Center"/>
             </StackLayout>
 
+            <Picker x:Name="comp"
+                    Title="Competition"
+                    VerticalOptions="CenterAndExpand"
+                    SelectedItem="{Binding CompKey, Mode=OneWayToSource}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x: String}">
+                        <x:String>Palm Beach</x:String>
+                        <x:String>Orlando</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
             <Button x:Name="PitScout" 
                     Text="Pit Scout Team" 
                     Clicked="PitScout_Clicked"

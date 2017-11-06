@@ -161,6 +161,54 @@ namespace ScoutingCollection
             }
         }
 
+        public int TeleFuel
+        {
+            set
+            {
+                if ((report as PitScout).tele_balls != value)
+                {
+                    (report as PitScout).tele_balls = value;
+                    OnPropertyChanged("TeleFuel");
+                }
+            }
+            get
+            {
+                return (report as PitScout).tele_balls;
+            }
+        }
+
+        public int AccScale
+        {
+            set
+            {
+                if((report as PitScout).acc_scale != value)
+                {
+                    (report as PitScout).acc_scale = value;
+                    OnPropertyChanged("AccScale");
+                }
+            }
+            get
+            {
+                return (report as PitScout).acc_scale;
+            }
+        }
+
+        public int ClimbTime
+        {
+            set
+            {
+                if((report as PitScout).climb_time != value)
+                {
+                    (report as PitScout).climb_time = value;
+                    OnPropertyChanged("ClimbTime");
+                }
+            }
+            get
+            {
+                return (report as PitScout).climb_time;
+            }
+        }
+
         public string Strategy
         {
             set
@@ -321,6 +369,53 @@ namespace ScoutingCollection
             }
         }
 
+        public bool AutoLow
+        {
+            set
+            {
+                if((report as PitScout).auto_low != value)
+                {
+                    (report as PitScout).auto_low = value;
+                    OnPropertyChanged("AutoLow");
+                }
+            }
+            get
+            {
+                return (report as PitScout).auto_low;
+            }
+        }
+
+        public bool TeleLow
+        {
+            set
+            {
+                if((report as PitScout).tele_low != value)
+                {
+                    (report as PitScout).tele_low = value;
+                    OnPropertyChanged("TeleLow");
+                }
+            }
+            get
+            {
+                return (report as PitScout).tele_low;
+            }
+        }
+
+        public bool Climb
+        {
+            set
+            {
+                if((report as PitScout).climb != value)
+                {
+                    (report as PitScout).climb = value;
+                    OnPropertyChanged("Climb");
+                }
+            }
+            get
+            {
+                return (report as PitScout).climb;
+            }
+        }
         
         public int Auto_Ball
         {
