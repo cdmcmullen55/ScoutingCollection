@@ -40,12 +40,14 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Auto Fuel?" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-                    <Switch x:Name="does_fuel"
-                            Toggled="does_fuel_Toggled"
-                            HorizontalOptions="EndAndExpand"/>
+                    <Label Text="Gear in Auto?"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"/>
+                    <Switch x:Name="auto_gear"
+                            IsToggled="{Binding AutoGear, Mode=OneWayToSource}"/>
                 </StackLayout>
-
+                
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Amount of Fuel:"
                            HorizontalOptions="StartAndExpand"
@@ -58,7 +60,18 @@
                 <Slider x:Name="auto_fuel"
                         Maximum="50"
                         Minimum="5"
-                        Value="{Binding Auto_Fuel, Mode=OneWayToSource}"/>
+                        Value="{Binding AutoBall, Mode=OneWayToSource}"
+                        IsEnabled="{Binding Fuel}"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="High Goal?"
+                           HorizontalOptions="StartAndExpand"
+                           FontSize="Medium"/>
+                    <Switch x:Name="auto_low"
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding AutoLow, Mode=OneWayToSource}"
+                            IsEnabled="{Binding Fuel}"/>
+                </StackLayout>
 
             </StackLayout>
         </ScrollView>

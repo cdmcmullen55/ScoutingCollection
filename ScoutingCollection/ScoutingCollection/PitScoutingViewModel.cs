@@ -129,6 +129,22 @@ namespace ScoutingCollection
             }
         }
 
+        public int AutoBall
+        {
+            set
+            {
+                if ((report as PitScout).auto_ball != value)
+                {
+                    (report as PitScout).auto_ball = value;
+                    OnPropertyChanged("Auto_Fuel");
+                }
+            }
+            get
+            {
+                return (report as PitScout).auto_ball;
+            }
+        }
+
         public int Run_Sec
         {
             set
@@ -158,6 +174,22 @@ namespace ScoutingCollection
             get
             {
                 return (report as PitScout).run_scale;
+            }
+        }
+
+        public int TeleGears
+        {
+            set
+            {
+                if((report as PitScout).tele_gears != value)
+                {
+                    (report as PitScout).tele_gears = value;
+                    OnPropertyChanged("TeleGears");
+                }
+            }
+            get
+            {
+                return (report as PitScout).tele_gears;
             }
         }
 
@@ -353,7 +385,7 @@ namespace ScoutingCollection
             }
         }
 
-        public bool Auto_Gear
+        public bool AutoGear
         {
             set
             {
@@ -416,24 +448,7 @@ namespace ScoutingCollection
                 return (report as PitScout).climb;
             }
         }
-        
-        public int Auto_Ball
-        {
-            set
-            {
-                if((report as PitScout).auto_ball != value)
-                {
-                    (report as PitScout).auto_ball = value;
-                    OnPropertyChanged("Auto_Fuel");
-                }
-            }
-            get
-            {
-                return (report as PitScout).auto_ball;
-            }
-        }
        
-
         public String Drive_Train
         {
             set

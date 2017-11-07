@@ -39,7 +39,7 @@
                     VerticalOptions="CenterAndExpand"
                     SelectedItem="{Binding CompKey, Mode=OneWayToSource}">
                 <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x: String}">
+                    <x:Array Type="{x:Type x:String}">
                         <x:String>Palm Beach</x:String>
                         <x:String>Orlando</x:String>
                     </x:Array>

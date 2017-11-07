@@ -5,7 +5,9 @@
              Title="Tele-Op">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+            <Label Text="{Binding Team, StringFormat='Team {0}'}" FontSize="Large"/>
+
+            <StackLayout/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
