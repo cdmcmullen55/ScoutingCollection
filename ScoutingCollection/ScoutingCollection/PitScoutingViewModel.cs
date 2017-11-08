@@ -29,6 +29,7 @@ namespace ScoutingCollection
         public PitScoutingViewModel(int team_number)
         {
             report = new PitScout(team_number);
+            TeleGears = "0";
         }
 
         
@@ -177,19 +178,19 @@ namespace ScoutingCollection
             }
         }
 
-        public int TeleGears
+        public string TeleGears
         {
             set
             {
-                if((report as PitScout).tele_gears != value)
+                if ((report as PitScout).tele_gears.ToString() != value && value != null)
                 {
-                    (report as PitScout).tele_gears = value;
+                    (report as PitScout).tele_gears = Int32.Parse(value);
                     OnPropertyChanged("TeleGears");
                 }
             }
             get
             {
-                return (report as PitScout).tele_gears;
+                return ((report as PitScout).tele_gears).ToString();
             }
         }
 
