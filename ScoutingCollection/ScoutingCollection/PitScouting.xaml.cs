@@ -25,7 +25,7 @@ namespace ScoutingCollection
         {
             this.mvm = mvm;
             //this.psvm = psvm;
-            this.BindingContext = (mvm.currentReport as PitScoutingViewModel);
+            this.BindingContext = mvm;
             InitializeComponent();
         }
     }

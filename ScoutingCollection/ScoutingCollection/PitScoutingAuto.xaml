@@ -18,12 +18,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,20,10,20">
-                <Label Text="{Binding Team, StringFormat='Team {0}'}" FontSize="Large"/>
+                <Label Text="{Binding CurrentReport.Team, StringFormat='Team {0}'}" FontSize="Large"/>
 
                 <Picker x:Name="Start_Pos" 
                         Title="Starting Position" 
                         SelectedIndexChanged="Start_Pos_SelectedIndexChanged"
-                        SelectedItem="{Binding Start_Pos, Mode=OneWayToSource}">
+                        SelectedItem="{Binding CurrentReport.Start_Pos, Mode=OneWayToSource}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Boiler</x:String>
@@ -36,7 +36,7 @@
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Baseline: " FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
                     <Switch x:Name="Baseline_Crossed"
-                            IsToggled="{Binding Baseline, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.Baseline, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -45,7 +45,7 @@
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="Center"/>
                     <Switch x:Name="auto_gear"
-                            IsToggled="{Binding AutoGear, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.AutoGear, Mode=OneWayToSource}"/>
                 </StackLayout>
                 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -60,8 +60,8 @@
                 <Slider x:Name="auto_fuel"
                         Maximum="50"
                         Minimum="5"
-                        Value="{Binding AutoBall, Mode=OneWayToSource}"
-                        IsEnabled="{Binding Fuel}"/>
+                        Value="{Binding CurrentReport.AutoBall, Mode=OneWayToSource}"
+                        IsEnabled="{Binding CurrentReport.Fuel}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="High Goal?"
@@ -69,8 +69,8 @@
                            FontSize="Medium"/>
                     <Switch x:Name="auto_low"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding AutoLow, Mode=OneWayToSource}"
-                            IsEnabled="{Binding Fuel}"/>
+                            IsToggled="{Binding CurrentReport.AutoLow, Mode=OneWayToSource}"
+                            IsEnabled="{Binding CurrentReport.Fuel}"/>
                 </StackLayout>
 
             </StackLayout>

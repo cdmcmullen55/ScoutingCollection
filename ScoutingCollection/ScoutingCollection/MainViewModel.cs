@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace ScoutingCollection
 {
     public class MainViewModel
     {
-        List<Scout> reports;
+        public ObservableCollection<ScoutVM> reports = new ObservableCollection<ScoutVM>();
         int team, match;
         bool currentIsMatch;
         public ScoutVM currentReport;
@@ -22,7 +23,7 @@ namespace ScoutingCollection
 
         public MainViewModel()
         {
-           /* PitScoutCommand = new Command(
+            /* PitScoutCommand = new Command(
            execute: () =>
            {
                currentReport = new PitScoutingViewModel(team);
@@ -74,6 +75,22 @@ namespace ScoutingCollection
             get
             {
                 return match;
+            }
+        }
+
+        public ScoutVM CurrentReport
+        {
+            set
+            {
+                if(currentReport != value)
+                {
+                    currentReport = value;
+                    OnPropertyChanged("CurrentReport");
+                }
+            }
+            get
+            {
+                return currentReport;
             }
         }
 

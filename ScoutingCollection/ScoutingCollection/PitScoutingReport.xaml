@@ -11,7 +11,7 @@
                         FontSize="Medium"
                         Clicked="generatePreviewWrap"/>
 
-                <Label Text="{Binding Preview, Mode=OneWay}"
+                <Label Text="{Binding CurrentReport.Preview, Mode=OneWay}"
                        FontSize="Small"
                        />
 
@@ -24,7 +24,6 @@
                 <Button x:Name="SaveReport"
                         Text="Save Report"
                         FontSize="Medium"
-                        Command="{Binding SerializeReport}"
                         Clicked="SaveReport_Clicked"
                         HorizontalOptions="EndAndExpand"/>
                 </StackLayout>

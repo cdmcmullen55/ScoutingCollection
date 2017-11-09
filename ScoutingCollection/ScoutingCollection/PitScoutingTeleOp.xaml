@@ -15,15 +15,15 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="{Binding Team, StringFormat='Team {0}'}" FontSize="Large"/>
+                <Label Text="{Binding CurrentReport.Team, StringFormat='Team {0}'}" FontSize="Large"/>
 
                 <Label Text="Gears Scored:"
                    FontSize="Medium"
                    HorizontalOptions="StartAndExpand"/>
 
                 <Picker x:Name="gears_scored"
-                    SelectedItem="{Binding TeleGears, Mode=OneWayToSource}"
-                    IsEnabled="{Binding Gears}">
+                    SelectedItem="{Binding CurrentReport.TeleGears, Mode=OneWayToSource}"
+                    IsEnabled="{Binding CurrentReport.Gears}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>1</x:String>
@@ -45,8 +45,8 @@
                 <Slider x:Name="fuel_scored"
                         Maximum="100"
                         Minimum="5"
-                        Value="{Binding TeleFuel, Mode=OneWayToSource}"
-                        IsEnabled="{Binding Fuel}"/>
+                        Value="{Binding CurrentReport.TeleFuel, Mode=OneWayToSource}"
+                        IsEnabled="{Binding CurrentReport.Fuel}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="{Binding Path=Value, StringFormat='Accuracy (1-5): {0}'}"
@@ -58,8 +58,8 @@
                 <Slider x:Name="acc_scale"
                         Maximum="5"
                         Minimum="1"
-                        Value="{Binding AccScale, Mode=OneWayToSource}"
-                        IsEnabled="{Binding Fuel}"/>
+                        Value="{Binding CurrentReport.AccScale, Mode=OneWayToSource}"
+                        IsEnabled="{Binding CurrentReport.Fuel}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Low Goal?"
@@ -67,8 +67,8 @@
                            HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="tele_low"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding TeleLow, Mode=OneWayToSource}"
-                            IsEnabled="{Binding Fuel}"/>
+                            IsToggled="{Binding CurrentReport.TeleLow, Mode=OneWayToSource}"
+                            IsEnabled="{Binding CurrentReport.Fuel}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -77,7 +77,7 @@
                            HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="climb"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding Climb, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.Climb, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -90,8 +90,8 @@
                 <Slider x:Name="climb_time"
                         Maximum="15"
                         Minimum="2"
-                        Value="{Binding ClimbTime, Mode=OneWayToSource}"
-                        IsEnabled="{Binding Climb}"/>
+                        Value="{Binding CurrentReport.ClimbTime, Mode=OneWayToSource}"
+                        IsEnabled="{Binding CurrentReport.Climb}"/>
 
             </StackLayout>
         </ScrollView>
