@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ScoutingCollection
 {
     public abstract class ScoutVM : INotifyPropertyChanged
     {
         public Scout report;
+        public bool isMatch;
+        public string preview;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int Team
@@ -61,6 +65,36 @@ namespace ScoutingCollection
             {
                 return (report as PitScout).robot_key;
             }
+        }
+
+        public string Preview
+        {
+            set
+            {
+                preview = value;
+                OnPropertyChanged("Preview");
+            }
+            get
+            {
+                return preview;
+            }
+        }
+
+        public void generatePreview()
+        {
+            XmlSerializer serializer;
+            StringWriter textWriter = new StringWriter();
+            if (isMatch)
+            {
+                serializer = new XmlSerializer(typeof(MatchScout));
+                serializer.Serialize(textWriter, (report as MatchScout));
+            }
+            else
+            {
+                serializer = new XmlSerializer(typeof(PitScout));
+                serializer.Serialize(textWriter, (report as PitScout));
+            }
+            preview = textWriter.ToString();
         }
 
         private void SetTeamKey()

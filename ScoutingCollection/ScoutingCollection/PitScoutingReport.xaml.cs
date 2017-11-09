@@ -26,5 +26,11 @@ namespace ScoutingCollection
         {
             
         }
+
+        private void generatePreviewWrap(object sender, ToggledEventArgs e)
+        {
+            //(BindingContext as ScoutVM).generatePreview();
+            (BindingContext as ScoutVM).preview = "test";
+        }
     }
 }

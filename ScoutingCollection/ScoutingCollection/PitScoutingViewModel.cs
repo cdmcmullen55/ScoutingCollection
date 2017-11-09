@@ -24,11 +24,13 @@ namespace ScoutingCollection
         public PitScoutingViewModel()
         {
             report = new PitScout(0000);
+            isMatch = false;
         }
 
         public PitScoutingViewModel(int team_number)
         {
             report = new PitScout(team_number);
+            isMatch = false;
             TeleGears = "0";
         }
 
