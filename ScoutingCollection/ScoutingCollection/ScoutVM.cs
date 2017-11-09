@@ -95,6 +95,7 @@ namespace ScoutingCollection
                 serializer.Serialize(textWriter, (report as PitScout));
             }
             preview = textWriter.ToString();
+            OnPropertyChanged("Preview");
         }
 
         private void SetTeamKey()
