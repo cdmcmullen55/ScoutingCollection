@@ -11,9 +11,15 @@
     </ContentPage.Padding>
 
     <StackLayout>
+        <Label Text="Reports List"
+               FontSize="Large"
+               HorizontalOptions="CenterAndExpand"/>
+
         <Button x:Name="return"
                 Text="Return"
+                FontSize="Medium"
                 Clicked="return_Clicked"/>
+        
         <ListView ItemsSource="{Binding Reports}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
@@ -43,5 +49,9 @@
         </ListView.ItemTemplate>
 
         </ListView>
-  </StackLayout>
+
+        <Button Text="Export All"
+                FontSize="Medium"
+                VerticalOptions="EndAndExpand"/>
+    </StackLayout>
 </ContentPage>

@@ -27,8 +27,18 @@ namespace ScoutingCollection
             var save = await DisplayAlert("Save Results?", "Changes cannot be made later.", "Save", "Cancel");
             if (save)
             {
+                int initialcount = (BindingContext as MainViewModel).reports.Count();
                 (BindingContext as MainViewModel).reports.Add((BindingContext as MainViewModel).currentReport);
-                await Navigation.PopModalAsync();
+                int newcount = (BindingContext as MainViewModel).reports.Count();
+                if (newcount > initialcount)
+                {
+                    await DisplayAlert("Saved!", null, "Ok");
+                    await Navigation.PopModalAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Error", "The report was not saved.", "Ok");
+                }
             }
         }
 
