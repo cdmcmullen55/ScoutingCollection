@@ -20,9 +20,10 @@
                 FontSize="Medium"
                 Clicked="return_Clicked"/>
         
-        <ListView ItemsSource="{Binding Reports}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
+        <ListView x:Name="report_list"
+                  ItemsSource="{Binding Reports}"
+                  ItemTapped="Handle_ItemTapped"
+                  CachingStrategy="RecycleElement">
             
     <!--Built in Cells-->
     <!--
@@ -50,8 +51,14 @@
 
         </ListView>
 
+        <Editor Text="{Binding Preview, Mode=OneWay}"
+                BindingContext="{Binding Source={x:Reference report_list}, Path=SelectedItem}"
+                HeightRequest="100"/>
+
         <Button Text="Export All"
                 FontSize="Medium"
                 VerticalOptions="EndAndExpand"/>
     </StackLayout>
 </ContentPage>
+    
+<!-- https://developer.xamarin.com/guides/xamarin-forms/user-interface/listview/interactivity/ -->

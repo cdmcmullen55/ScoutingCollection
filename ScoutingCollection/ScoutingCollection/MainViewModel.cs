@@ -108,6 +108,12 @@ namespace ScoutingCollection
             currentReport = new PitScoutingViewModel(team);
         }
 
+        public void InitMatchScout()
+        {
+            currentIsMatch = true;
+            currentReport = new MatchVM(team, match);
+        }
+
         /* void RefreshCanExecutes()
         {
             ((Command)PitScoutCommand).ChangeCanExecute();

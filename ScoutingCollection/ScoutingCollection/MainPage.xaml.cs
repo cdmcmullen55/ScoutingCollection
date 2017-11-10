@@ -35,7 +35,7 @@ namespace ScoutingCollection
 
         private void MatchScout_Clicked(object sender, EventArgs e)
         {
-
+            (this.BindingContext as MainViewModel).InitMatchScout();
         }
 
         private void Team_TextChanged(object sender, TextChangedEventArgs e)
