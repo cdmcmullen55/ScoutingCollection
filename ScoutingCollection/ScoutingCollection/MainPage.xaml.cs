@@ -9,8 +9,6 @@ namespace ScoutingCollection
 {
     public partial class MainPage : ContentPage
     {
-        MainViewModel mvm;
-
         public MainPage()
         {
             InitializeComponent();
@@ -59,9 +57,10 @@ namespace ScoutingCollection
 
         }
 
-        private void ReportList_Clicked(object sender, EventArgs e)
+        async void ReportList_Clicked(object sender, EventArgs e)
         {
-
+            var ReportList = new ReportsListView(this.BindingContext as MainViewModel);
+            await Navigation.PushModalAsync(ReportList);
         }
     }
 }

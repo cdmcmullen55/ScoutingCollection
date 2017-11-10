@@ -24,6 +24,7 @@ namespace ScoutingCollection
                 {
                     report.team = value;
                     OnPropertyChanged("Team");
+                    OnPropertyChanged("Identifier");
                     SetTeamKey();
                     if (!report.getType())
                         SetRobotKey();
@@ -32,6 +33,23 @@ namespace ScoutingCollection
             get
             {
                 return report.team;
+            }
+        }
+
+        public String Identifier
+        {
+            get
+            {
+                string id = "Team ";
+                if (isMatch)
+                {
+                    id = id + Team + ", Match " + (report as MatchScout).match_number;
+                }
+                else
+                {
+                    id = id + Team + " Pit Scout";
+                }
+                return id;
             }
         }
 

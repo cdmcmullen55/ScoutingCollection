@@ -11,7 +11,7 @@ namespace ScoutingCollection
 {
     public class MainViewModel
     {
-        public ObservableCollection<ScoutVM> reports = new ObservableCollection<ScoutVM>();
+        public List<ScoutVM> reports = new List<ScoutVM>();
         int team, match;
         bool currentIsMatch;
         public ScoutVM currentReport;
@@ -91,6 +91,14 @@ namespace ScoutingCollection
             get
             {
                 return currentReport;
+            }
+        }
+
+        public List<ScoutVM> Reports
+        {
+            get
+            {
+                return reports;
             }
         }
 
