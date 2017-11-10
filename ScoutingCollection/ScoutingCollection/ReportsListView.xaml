@@ -41,7 +41,7 @@
                     <StackLayout>
                         <Label Text="{Binding Identifier}" 
                                Style="{DynamicResource ListItemTextStyle}" />
-                        <Label Text="{Binding Detail}" 
+                        <Label Text="{Binding IsMatch}" 
                                Style="{DynamicResource ListItemDetailTextStyle}"/>
                     </StackLayout>
                 </ViewCell>

@@ -36,6 +36,30 @@ namespace ScoutingCollection
             }
         }
 
+        public string IsMatch
+        {
+            set
+            {
+                if (isMatch && value != "Match")
+                {
+                    isMatch = false;
+                    OnPropertyChanged("IsMatch");
+                }
+                else if (!isMatch && value != "Pit")
+                {
+                    isMatch = true;
+                    OnPropertyChanged("IsMatch");
+                }
+            }
+            get
+            {
+                if (isMatch)
+                    return "Match";
+                else
+                    return "Pit";
+            }
+        }
+
         public String Identifier
         {
             get

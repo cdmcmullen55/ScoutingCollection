@@ -33,6 +33,7 @@ namespace ScoutingCollection
                 if (newcount > initialcount)
                 {
                     await DisplayAlert("Saved!", null, "Ok");
+                    (BindingContext as MainViewModel).currentReport.generatePreview();
                     await Navigation.PopModalAsync();
                 }
                 else
