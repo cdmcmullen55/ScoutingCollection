@@ -33,9 +33,11 @@ namespace ScoutingCollection
             await Navigation.PushModalAsync(pitscouting);
         }
 
-        private void MatchScout_Clicked(object sender, EventArgs e)
+        async void MatchScout_Clicked(object sender, EventArgs e)
         {
             (this.BindingContext as MainViewModel).InitMatchScout();
+            var matchscouting = new MatchScoutAutoPage(this.BindingContext as MainViewModel);
+            await Navigation.PushModalAsync(matchscouting);
         }
 
         private void Team_TextChanged(object sender, TextChangedEventArgs e)

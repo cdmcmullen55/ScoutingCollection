@@ -38,6 +38,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatchScoutAutoPage.xaml.cs">
+      <DependentUpon>MatchScoutAutoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MatchVM.cs" />
     <Compile Include="ReportsListView.xaml.cs">
       <DependentUpon>ReportsListView.xaml</DependentUpon>
@@ -133,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ReportsListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MatchScoutAutoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
