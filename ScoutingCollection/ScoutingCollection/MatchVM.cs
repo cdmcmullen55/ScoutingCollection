@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ScoutingCollection
 {
     public class MatchVM : ScoutVM
     {
+        public bool gears_selected, tele;
+
+        public Button load_gear, cent_gear, boil_gear, drop_gear, grnd_pckp, load_pckp;
+
+        public ICommand IncrementCommand { private set; get; }
+
         public MatchVM(int team_num, int match_num)
         {
             report = new MatchScout(team_num, match_num);
+            gears_selected = true;
+            tele = false;
+            IncrementCommand = new Command<string>(Increment);
+            setButtonProperties();
         }
 
         public int MatchNumber
@@ -30,51 +42,83 @@ namespace ScoutingCollection
             }
         }
 
-        public int AutoGear
+        public int AutoGearLoad
         {
             set
             {
-                if ((report as MatchScout).auto_gear != value)
+                if ((report as MatchScout).auto_gear_load != value)
                 {
-                    (report as MatchScout).auto_gear = value;
-                    OnPropertyChanged("AutoGear");
+                    (report as MatchScout).auto_gear_load = value;
+                    OnPropertyChanged("AutoGearLoad");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_gear;
+                return (report as MatchScout).auto_gear_load;
             }
         }
 
-        public int AutoGrndGear
+        public int AutoGearCent
         {
             set
             {
-                if ((report as MatchScout).auto_grnd_gear != value)
+                if ((report as MatchScout).auto_gear_cent != value)
                 {
-                    (report as MatchScout).auto_grnd_gear = value;
-                    OnPropertyChanged("AutoGrndGear");
+                    (report as MatchScout).auto_gear_cent = value;
+                    OnPropertyChanged("AutoGearCent");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_grnd_gear;
+                return (report as MatchScout).auto_gear_cent;
             }
         }
 
-        public int AutoLoadGear
+        public int AutoGearBoil
         {
             set
             {
-                if ((report as MatchScout).auto_load_gear != value)
+                if ((report as MatchScout).auto_gear_boil != value)
                 {
-                    (report as MatchScout).auto_load_gear = value;
-                    OnPropertyChanged("AutoLoadGear");
+                    (report as MatchScout).auto_gear_boil = value;
+                    OnPropertyChanged("AutoGearBoil");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_load_gear;
+                return (report as MatchScout).auto_gear_boil;
+            }
+        }
+
+        public int AutoGrndPckp
+        {
+            set
+            {
+                if ((report as MatchScout).auto_grnd_pckp != value)
+                {
+                    (report as MatchScout).auto_grnd_pckp = value;
+                    OnPropertyChanged("AutoGrndPckp");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_grnd_pckp;
+            }
+        }
+
+        public int AutoLoadPckp
+        {
+            set
+            {
+                if ((report as MatchScout).auto_load_pckp != value)
+                {
+                    (report as MatchScout).auto_load_pckp = value;
+                    OnPropertyChanged("AutoLoadPckp");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_load_pckp;
             }
         }
 
@@ -126,19 +170,51 @@ namespace ScoutingCollection
             }
         }
 
-        public int TeleGear
+        public int TeleGearLoad
         {
             set
             {
-                if ((report as MatchScout).tele_gear != value)
+                if ((report as MatchScout).tele_gear_load != value)
                 {
-                    (report as MatchScout).tele_gear = value;
-                    OnPropertyChanged("TeleGear");
+                    (report as MatchScout).tele_gear_load = value;
+                    OnPropertyChanged("TeleGearLoad");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_gear;
+                return (report as MatchScout).tele_gear_load;
+            }
+        }
+
+        public int TeleGearCent
+        {
+            set
+            {
+                if ((report as MatchScout).tele_gear_cent != value)
+                {
+                    (report as MatchScout).tele_gear_cent = value;
+                    OnPropertyChanged("TeleGearCent");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).tele_gear_cent;
+            }
+        }
+
+        public int TeleGearBoil
+        {
+            set
+            {
+                if ((report as MatchScout).tele_gear_boil != value)
+                {
+                    (report as MatchScout).tele_gear_boil = value;
+                    OnPropertyChanged("TeleGearBoil");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).tele_gear_boil;
             }
         }
 
@@ -270,6 +346,22 @@ namespace ScoutingCollection
             }
         }
 
+        public bool Tele
+        {
+            set
+            {
+                if (tele != value)
+                {
+                    tele = value;
+                    OnPropertyChanged("Tele");
+                }
+            }
+            get
+            {
+                return tele;
+            }
+        }
+
         public bool TeleBreak
         {
             set
@@ -381,6 +473,214 @@ namespace ScoutingCollection
                 return (report as MatchScout).comp_key;
             }
         }
+
+        public Button ButtonOne
+        {
+            get
+            {
+                if (gears_selected)
+                {
+                    return load_gear;
+                }
+                else
+                    return drop_gear;
+            }
+        }
+
+        public Button ButtonTwo
+        {
+            get
+            {
+                if (gears_selected)
+                {
+                    return cent_gear;
+                }
+                else
+                    return load_pckp;
+            }
+        }
+
+        public Button ButtonThree
+        {
+            get
+            {
+                if (gears_selected)
+                {
+                    return boil_gear;
+                }
+                else
+                    return grnd_pckp;
+            }
+        }
+
+        public void setButtonProperties()
+        {
+            if (tele)
+            {
+                load_gear = new Button
+                {
+                    Text = String.Format("Loading Gears = {0}", TeleGearLoad),
+                    Command = IncrementCommand,
+                    CommandParameter = "load_gear"
+                };
+                cent_gear = new Button
+                {
+                    Text = String.Format("Center Gears = {0}", TeleGearCent),
+                    Command = IncrementCommand,
+                    CommandParameter = "cent_gear"
+                };
+                boil_gear = new Button
+                {
+                    Text = String.Format("Boiler Gears = {0}", TeleGearBoil),
+                    Command = IncrementCommand,
+                    CommandParameter = "boil_gear"
+                };
+                drop_gear = new Button
+                {
+                    Text = String.Format("Gears Dropped = {0}", TeleGearDrop),
+                    Command = IncrementCommand,
+                    CommandParameter = "drop_gear"
+                };
+                load_pckp = new Button
+                {
+                    Text = String.Format("Loading Pickup = {0}", TeleLoadPckp),
+                    Command = IncrementCommand,
+                    CommandParameter = "load_pckp"
+                };
+                grnd_pckp = new Button
+                {
+                    Text = String.Format("Ground Pickup = {0}", TeleGrndPckp),
+                    Command = IncrementCommand,
+                    CommandParameter = "grnd_pckp"
+                };
+                RefreshButtons();
+            }
+            else
+            {
+                load_gear = new Button
+                {
+                    Text = String.Format("Loading Gears = {0}", AutoGearLoad),
+                    Command = IncrementCommand,
+                    CommandParameter = "load_gear"
+                };
+                cent_gear = new Button
+                {
+                    Text = String.Format("Center Gears = {0}", AutoGearCent),
+                    Command = IncrementCommand,
+                    CommandParameter = "cent_gear"
+                };
+                boil_gear = new Button
+                {
+                    Text = String.Format("Boiler Gears = {0}", AutoGearBoil),
+                    Command = IncrementCommand,
+                    CommandParameter = "boil_gear"
+                };
+                drop_gear = new Button
+                {
+                    Text = String.Format("Gears Dropped = {0}", AutoGearDrop),
+                    Command = IncrementCommand,
+                    CommandParameter = "drop_gear"
+                };
+                load_pckp = new Button
+                {
+                    Text = String.Format("Loading Pickup = {0}", AutoLoadPckp),
+                    Command = IncrementCommand,
+                    CommandParameter = "load_pckp"
+                };
+                grnd_pckp = new Button
+                {
+                    Text = String.Format("Ground Pickup = {0}", AutoGrndPckp),
+                    Command = IncrementCommand,
+                    CommandParameter = "grnd_pckp"
+                };
+                RefreshButtons();
+            }
+        }
+
+        public void Increment(string parameter)
+        {
+            if (tele)
+            {
+                switch (parameter)
+                {
+                    case "load_gear":
+                        (report as MatchScout).tele_gear_load++;
+                        OnPropertyChanged("TeleGearLoad");
+                        setButtonProperties();
+                        break;
+                    case "cent_gear":
+                        (report as MatchScout).tele_gear_cent++;
+                        OnPropertyChanged("TeleGearCent");
+                        setButtonProperties();
+                        break;
+                    case "boil_gear":
+                        (report as MatchScout).tele_gear_boil++;
+                        OnPropertyChanged("TeleGearBoil");
+                        setButtonProperties();
+                        break;
+                    case "drop_gear":
+                        (report as MatchScout).tele_gear_drop++;
+                        OnPropertyChanged("TeleGearDrop");
+                        setButtonProperties();
+                        break;
+                    case "grnd_pckp":
+                        (report as MatchScout).tele_grnd_pckp++;
+                        OnPropertyChanged("TeleGrndPckp");
+                        setButtonProperties();
+                        break;
+                    case "load_pckp":
+                        (report as MatchScout).tele_load_pckp++;
+                        OnPropertyChanged("TeleLoadPckp");
+                        setButtonProperties();
+                        break;
+                }
+            }
+            else
+            {
+                switch (parameter)
+                {
+                    case "load_gear":
+                        (report as MatchScout).auto_gear_load++;
+                        OnPropertyChanged("AutoGearLoad");
+                        setButtonProperties();
+                        break;
+                    case "cent_gear":
+                        (report as MatchScout).auto_gear_cent++;
+                        OnPropertyChanged("AutoGearCent");
+                        setButtonProperties();
+                        break;
+                    case "boil_gear":
+                        (report as MatchScout).auto_gear_boil++;
+                        OnPropertyChanged("AutoGearBoil");
+                        setButtonProperties();
+                        break;
+                    case "drop_gear":
+                        (report as MatchScout).auto_gear_drop++;
+                        OnPropertyChanged("AutoGearDrop");
+                        setButtonProperties();
+                        break;
+                    case "grnd_pckp":
+                        (report as MatchScout).auto_grnd_pckp++;
+                        OnPropertyChanged("AutoGrndPckp");
+                        setButtonProperties();
+                        break;
+                    case "load_pckp":
+                        (report as MatchScout).auto_load_pckp++;
+                        OnPropertyChanged("AutoLoadPckp");
+                        setButtonProperties();
+                        break;
+                }
+            }
+            //System.Diagnostics.Debug.WriteLine("Command Executed");
+        }
+
+        public void RefreshButtons()
+        {
+            OnPropertyChanged("ButtonOne");
+            OnPropertyChanged("ButtonTwo");
+            OnPropertyChanged("ButtonThree");
+        }
+
         public string CompParse(string comp_name)
         {
             if (comp_name == "Palm Beach")

@@ -4,7 +4,7 @@
              x:Class="ScoutingCollection.MatchScoutAutoPage">
     <ContentPage.Content>
         <StackLayout>
-            <Grid ColumnSpacing="5">
+            <Grid ColumnSpacing="5" VerticalOptions="Fill">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -32,6 +32,7 @@
 
                 <Button x:Name="continue"
                         Text="Continue"
+                        Clicked="continue_Clicked"
                         Grid.Row="0"
                         Grid.Column="4"/>
 
@@ -44,8 +45,51 @@
 
                 <Button x:Name="gears"
                         Text="Gears"
-                        Grid.Row="2" Grid.RowSpan="2"
+                        Clicked="gears_Clicked"
+                        Grid.Row="2"
                         Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                <Button x:Name="pickup"
+                        Text="Pickup"
+                        Clicked="pickup_Clicked"
+                        Grid.Row="2"
+                        Grid.Column="3" Grid.ColumnSpan="3"/>
+
+                <Button x:Name="ButtonOne"
+                        Text="{Binding CurrentReport.ButtonOne.Text}"
+                        Command="{Binding CurrentReport.ButtonOne.Command}"
+                        CommandParameter="{Binding CurrentReport.ButtonOne.CommandParameter}"
+                        Grid.Row="4"
+                        Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="ButtonTwo"
+                        Text="{Binding CurrentReport.ButtonTwo.Text}"
+                        Command="{Binding CurrentReport.ButtonTwo.Command}"
+                        CommandParameter="{Binding CurrentReport.ButtonTwo.CommandParameter}"
+                        Grid.Row="4"
+                        Grid.Column="2" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="ButtonThree"
+                        Text="{Binding CurrentReport.ButtonThree.Text}"
+                        Command="{Binding CurrentReport.ButtonThree.Command}"
+                        CommandParameter="{Binding CurrentReport.ButtonThree.CommandParameter}"
+                        Grid.Row="4"
+                        Grid.Column="4" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="baseline"
+                        Text="Baseline"
+                        Grid.Row="6"
+                        Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="breakdown"
+                        Text="Breakdown"
+                        Grid.Row="6"
+                        Grid.Column="2" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="no_action"
+                        Text="No Action"
+                        Grid.Row="6"
+                        Grid.Column="4" Grid.ColumnSpan="2"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

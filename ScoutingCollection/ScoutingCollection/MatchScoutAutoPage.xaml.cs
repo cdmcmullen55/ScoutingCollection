@@ -20,7 +20,31 @@ namespace ScoutingCollection
 
         async void back_Clicked(object sender , EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            if (((BindingContext as MainViewModel).currentReport as MatchVM).Tele)
+            {
+                ((BindingContext as MainViewModel).currentReport as MatchVM).Tele = false;
+                ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+            }
+            else
+                await Navigation.PopModalAsync();
         }
-	}
+
+        private void gears_Clicked(object sender, EventArgs e)
+        {
+            ((BindingContext as MainViewModel).currentReport as MatchVM).gears_selected = true;
+            ((BindingContext as MainViewModel).currentReport as MatchVM).RefreshButtons();
+        }
+
+        private void pickup_Clicked(object sender, EventArgs e)
+        {
+            ((BindingContext as MainViewModel).currentReport as MatchVM).gears_selected = false;
+            ((BindingContext as MainViewModel).currentReport as MatchVM).RefreshButtons();
+        }
+
+        private void continue_Clicked(object sender, EventArgs e)
+        {
+            ((BindingContext as MainViewModel).currentReport as MatchVM).Tele = true;
+            ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+        }
+    }
 }
