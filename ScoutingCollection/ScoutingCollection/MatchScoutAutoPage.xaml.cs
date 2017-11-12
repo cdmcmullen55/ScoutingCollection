@@ -24,6 +24,7 @@ namespace ScoutingCollection
             {
                 ((BindingContext as MainViewModel).currentReport as MatchVM).Tele = false;
                 ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+                baseline.IsEnabled = true;
             }
             else
                 await Navigation.PopModalAsync();
@@ -41,10 +42,26 @@ namespace ScoutingCollection
             ((BindingContext as MainViewModel).currentReport as MatchVM).RefreshButtons();
         }
 
-        private void continue_Clicked(object sender, EventArgs e)
+        async void continue_Clicked(object sender, EventArgs e)
         {
-            ((BindingContext as MainViewModel).currentReport as MatchVM).Tele = true;
-            ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+            if (((BindingContext as MainViewModel).currentReport as MatchVM).Tele)
+            {
+                var finish = await DisplayAlert("Finish?", "You will not be able to make changes after continuing.", "Finish", 
+                    "Cancel");
+                if (finish)
+                {
+                    var postmatchpage = new PostMatchScoutPage((BindingContext as MainViewModel), this);
+                    await Navigation.PushModalAsync(postmatchpage);
+                }
+                else
+                    return;
+            }
+            else
+            {
+                ((BindingContext as MainViewModel).currentReport as MatchVM).Tele = true;
+                ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+                baseline.IsEnabled = false;
+            }
         }
     }
 }
