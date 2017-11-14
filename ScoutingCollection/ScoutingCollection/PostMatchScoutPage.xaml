@@ -9,6 +9,13 @@
             <Button Text="Back"
                     Clicked="Back_Clicked"/>
 
+            <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                <Label Text="Climb Attempted?"
+                       FontSize="Medium"/>
+                <Switch x:Name="climb_att"
+                        Value="{Binding CurrentReport.TkoffAtt}"/>
+            </StackLayout>
+
             <Button Text="Cancel"
                     Clicked="Cancel_Clicked"/>
         </StackLayout>

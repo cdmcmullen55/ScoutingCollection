@@ -27,6 +27,7 @@
                 <Label Text="Match Number:" VerticalOptions="Center" FontSize="Medium"/>
                 <Entry x:Name="Match"
                        Placeholder="Ignore for pit scouting"
+                       Keyboard="Numeric"
                        Text="{Binding Match, Mode=OneWayToSource}"
                        TextChanged="Match_TextChanged"
                        Completed="Match_Completed"
