@@ -13,7 +13,27 @@
                 <Label Text="Climb Attempted?"
                        FontSize="Medium"/>
                 <Switch x:Name="climb_att"
-                        Value="{Binding CurrentReport.TkoffAtt}"/>
+                        IsToggled="{Binding CurrentReport.TkoffAtt}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                <Label Text="Climb Successful?"
+                       FontSize="Medium"/>
+                <Switch x:Name="climb_succ"
+                        IsToggled="{Binding CurrentReport.TkoffSucc}"
+                        IsEnabled="{Binding CurrentReport.TkoffAtt}"/>
+            </StackLayout>
+
+            <Label Text="{Binding CurrentReport.TkoffSpeed, StringFormat='Climb Speed (1-5): {0}'}"
+                   FontSize="Medium"/>
+
+            <Slider x:Name="climb_speed"
+                    Maximum="5"
+                    Minimum="1"
+                    Value="{Binding CurrentReport.TkoffSpeed, Mode=OneWayToSource}"/>
+
+            <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                
             </StackLayout>
 
             <Button Text="Cancel"
