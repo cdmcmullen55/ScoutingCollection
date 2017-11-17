@@ -63,5 +63,10 @@ namespace ScoutingCollection
                 baseline.IsEnabled = false;
             }
         }
+
+        private void baseline_Clicked(object sender, EventArgs e)
+        {
+            ((BindingContext as MainViewModel).currentReport as MatchVM).Baseline = true;
+        }
     }
 }

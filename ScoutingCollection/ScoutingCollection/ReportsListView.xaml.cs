@@ -25,15 +25,15 @@ namespace ScoutingCollection
             BindingContext = mvm;
         }
 
-        async void Handle_ItemTapped(object sender, SelectedItemChangedEventArgs e)
+        void Handle_ItemTapped(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
             //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            //((ListView)sender).SelectedItem = null;
         }
 
         async void return_Clicked(object sender, EventArgs e)

@@ -12,8 +12,6 @@ namespace ScoutingCollection
 {
     public partial class App : Application
     {
-        MainViewModel mainViewModel;
-
         public App()
         {
             InitializeComponent();

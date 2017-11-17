@@ -14,6 +14,14 @@ namespace ScoutingCollection
         //gears attempted shouldn't be interacre with -- just scored plus dropped
 		public bool auto_none, auto_break, tele_none, tele_break, tkoff_att, tkoff_succ, win, rotors;
 		public String t_m_key, comp_key;
+
+        public MatchScout()
+        {
+            team = 0;
+            match_number = 0;
+            is_match = true;
+        }
+
         public MatchScout(int team_num, int match_num)
         {
             team = team_num;

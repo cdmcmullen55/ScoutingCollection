@@ -38,7 +38,7 @@ namespace ScoutingCollection
 
         public string IsMatch
         {
-            set
+            /*set
             {
                 if (isMatch && value != "Match")
                 {
@@ -50,7 +50,7 @@ namespace ScoutingCollection
                     isMatch = true;
                     OnPropertyChanged("IsMatch");
                 }
-            }
+            }*/
             get
             {
                 if (isMatch)

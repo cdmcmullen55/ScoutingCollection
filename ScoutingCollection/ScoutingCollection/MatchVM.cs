@@ -21,6 +21,7 @@ namespace ScoutingCollection
             report = new MatchScout(team_num, match_num);
             gears_selected = true;
             tele = false;
+            isMatch = true;
             IncrementCommand = new Command<string>(Increment);
             setButtonProperties();
         }
@@ -327,6 +328,22 @@ namespace ScoutingCollection
             get
             {
                 return (report as MatchScout).auto_break;
+            }
+        }
+
+        public bool Baseline
+        {
+            set
+            {
+                if ((report as MatchScout).baseline != value)
+                {
+                    (report as MatchScout).baseline = value;
+                    OnPropertyChanged("Baseline");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).baseline;
             }
         }
 

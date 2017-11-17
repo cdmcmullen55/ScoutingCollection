@@ -2,42 +2,86 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ScoutingCollection.PostMatchScoutPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Switch">
+                <Setter Property="Scale" Value="2.5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Welcome to Xamarin Forms!" />
 
-            <Button Text="Back"
-                    Clicked="Back_Clicked"/>
+                <Button Text="Back"
+                        FontSize="Medium"
+                        Clicked="Back_Clicked"/>
 
-            <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                <Label Text="Climb Attempted?"
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Climb Attempted?"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="climb_att"
+                            IsToggled="{Binding CurrentReport.TkoffAtt}"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Climb Successful?"
+                           FontSize="Medium"
+                           VerticalOptions="Center"/>
+                    <Switch x:Name="climb_succ"
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding CurrentReport.TkoffSucc}"
+                            IsEnabled="{Binding CurrentReport.TkoffAtt}"/>
+                </StackLayout>
+
+                <Label Text="{Binding CurrentReport.TkoffSpeed, StringFormat='Climb Speed (1-5): {0}'}"
                        FontSize="Medium"/>
-                <Switch x:Name="climb_att"
-                        IsToggled="{Binding CurrentReport.TkoffAtt}"/>
-            </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                <Label Text="Climb Successful?"
+                <Slider x:Name="climb_speed"
+                        Maximum="5"
+                        Minimum="1"
+                        Value="{Binding CurrentReport.TkoffSpeed, Mode=OneWayToSource}"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Win?"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"/>
+                    <Switch x:Name="win"
+                            IsToggled="{Binding Current.Report.Win}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Rotors?"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"/>
+                    <Switch x:Name="rotors"
+                            IsToggled="{Binding Current.Report.Rotors}"/>
+                </StackLayout>
+
+                <Label Text="{Binding CurrentReport.DfnseRate, StringFormat='Defense (1-5): {0}'}"
                        FontSize="Medium"/>
-                <Switch x:Name="climb_succ"
-                        IsToggled="{Binding CurrentReport.TkoffSucc}"
-                        IsEnabled="{Binding CurrentReport.TkoffAtt}"/>
+
+                <Slider x:Name="dfnse_rate"
+                        Maximum="5"
+                        Minimum="1"
+                        Value="{Binding CurrentReport.DfnseRate, Mode=OneWayToSource}"/>
+
+                <Button Text="Save Report"
+                        FontSize="Medium"
+                        Clicked="SaveReport_Clicked"/>
+
+                <Button Text="Cancel"
+                        FontSize="Medium"
+                        Clicked="Cancel_Clicked"/>
             </StackLayout>
-
-            <Label Text="{Binding CurrentReport.TkoffSpeed, StringFormat='Climb Speed (1-5): {0}'}"
-                   FontSize="Medium"/>
-
-            <Slider x:Name="climb_speed"
-                    Maximum="5"
-                    Minimum="1"
-                    Value="{Binding CurrentReport.TkoffSpeed, Mode=OneWayToSource}"/>
-
-            <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                
-            </StackLayout>
-
-            <Button Text="Cancel"
-                    Clicked="Cancel_Clicked"/>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

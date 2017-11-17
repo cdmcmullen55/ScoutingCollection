@@ -77,7 +77,8 @@
                         Grid.Column="4" Grid.ColumnSpan="2"/>
 
                 <Button x:Name="baseline"
-                        Text="Baseline"
+                        Text="{Binding CurrentReport.Baseline, StringFormat='Baseline: {0}'}"
+                        Clicked="baseline_Clicked"
                         Grid.Row="6"
                         Grid.Column="0" Grid.ColumnSpan="2"/>
 
