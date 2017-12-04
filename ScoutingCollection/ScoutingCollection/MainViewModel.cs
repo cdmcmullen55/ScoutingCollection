@@ -1,10 +1,13 @@
-﻿using System;
+﻿using PCLStorage;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Xamarin.Forms;
 
 namespace ScoutingCollection
@@ -12,6 +15,7 @@ namespace ScoutingCollection
     public class MainViewModel
     {
         public List<ScoutVM> reports = new List<ScoutVM>();
+        public List<Scout> reportmodels = new List<Scout>();
         int team, match;
         bool currentIsMatch;
         public ScoutVM currentReport;
@@ -112,6 +116,36 @@ namespace ScoutingCollection
         {
             currentIsMatch = true;
             currentReport = new MatchVM(team, match);
+        }
+
+        public async void SaveForExport()
+        {
+            IFolder rootFolder = FileSystem.Current.LocalStorage;
+            IFolder folder = await rootFolder.CreateFolderAsync("ReportSave",
+                CreationCollisionOption.OpenIfExists);
+            IFile file = await folder.CreateFileAsync("reports.xml",
+                CreationCollisionOption.ReplaceExisting);
+            GenerateReportsList();
+            await file.WriteAllTextAsync(SerializeReportsList());
+        }
+
+        private void GenerateReportsList()
+        {
+            foreach(ScoutVM report in reports)
+            {
+                reportmodels.Add(report.report);
+            }
+        }
+
+        private string SerializeReportsList()
+        {
+            string results;
+            XmlSerializer serializer;
+            StringWriter textWriter = new StringWriter();
+            serializer = new XmlSerializer(typeof(List<Scout>));
+            serializer.Serialize(textWriter, (reportmodels as List<Scout>));
+            results = textWriter.ToString();
+            return results;
         }
 
         /* void RefreshCanExecutes()

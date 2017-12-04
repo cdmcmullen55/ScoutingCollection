@@ -55,9 +55,11 @@
                 BindingContext="{Binding Source={x:Reference report_list}, Path=SelectedItem}"
                 HeightRequest="100"/>
 
-        <Button Text="Export All"
+        <Button x:Name="ExportAll"
+                Text="Export All"
                 FontSize="Medium"
-                VerticalOptions="EndAndExpand"/>
+                VerticalOptions="EndAndExpand"
+                Clicked="ExportAll_Clicked"/>
     </StackLayout>
 </ContentPage>
     

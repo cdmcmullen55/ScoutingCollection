@@ -40,5 +40,10 @@ namespace ScoutingCollection
         {
             await Navigation.PopModalAsync();
         }
+
+        private void ExportAll_Clicked(object sender, EventArgs e)
+        {
+            (BindingContext as MainViewModel).SaveForExport();
+        }
     }
 }
