@@ -4,6 +4,7 @@
     "Microsoft.AppCenter.Crashes": "1.0.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "PCLStorage": "1.0.2",
+    "Xam.Plugins.Messaging": "5.0.0",
     "Xamarin.Forms": "2.5.0.91635"
   },
   "frameworks": {
