@@ -1,4 +1,5 @@
 ﻿using PCLStorage;
+using Plugin.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -127,6 +128,17 @@ namespace ScoutingCollection
                 CreationCollisionOption.ReplaceExisting);
             GenerateReportsList();
             await file.WriteAllTextAsync(SerializeReportsList());
+            var emailMessenger = CrossMessaging.Current.EmailMessenger;
+            if (emailMessenger.CanSendEmailAttachments && emailMessenger.CanSendEmailAttachments)
+            {
+                var email = new EmailMessageBuilder()
+                    .To("bd541331@ahschool.com")
+                    .Subject("Xamarin Messaging Plugin")
+                    .Body("Well hello there from Xam.Messaging.Plugin")
+                    .WithAttachment(file.Path, "xml")
+                    .Build();
+                emailMessenger.SendEmail(email);
+            }
         }
 
         private void GenerateReportsList()
