@@ -9,6 +9,8 @@ using System.Xml.Serialization;
 
 namespace ScoutingCollection
 {
+    [XmlInclude(typeof(PitScoutingViewModel))]
+    [XmlInclude(typeof(MatchVM))]
     public abstract class ScoutVM : INotifyPropertyChanged
     {
         public Scout report;

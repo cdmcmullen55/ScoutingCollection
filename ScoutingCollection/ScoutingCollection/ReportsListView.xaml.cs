@@ -43,7 +43,7 @@ namespace ScoutingCollection
 
         private void ExportAll_Clicked(object sender, EventArgs e)
         {
-            (BindingContext as MainViewModel).SaveForExport();
+            (BindingContext as MainViewModel).Export();
         }
     }
 }

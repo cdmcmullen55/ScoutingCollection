@@ -20,6 +20,7 @@ namespace ScoutingCollection
         int team, match;
         bool currentIsMatch;
         public ScoutVM currentReport;
+        private IFile modelfile, vmfile;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -49,6 +50,11 @@ namespace ScoutingCollection
             {
                 return (match != 0 && team != 0);
             }); */
+        }
+
+        public MainViewModel(List<ScoutVM> reports)
+        {
+            this.reports = reports;
         }
 
         public int Team
@@ -119,15 +125,34 @@ namespace ScoutingCollection
             currentReport = new MatchVM(team, match);
         }
 
-        public async void SaveForExport()
+        public void SaveForExport()
+        {
+            SaveForExport(false);
+        }
+
+        public async void SaveForExport(bool savevm)
         {
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             IFolder folder = await rootFolder.CreateFolderAsync("ReportSave",
                 CreationCollisionOption.OpenIfExists);
-            IFile file = await folder.CreateFileAsync("reports.xml",
-                CreationCollisionOption.ReplaceExisting);
-            GenerateReportsList();
-            await file.WriteAllTextAsync(SerializeReportsList());
+            if (savevm)
+            {
+                vmfile = await folder.CreateFileAsync("vmmodels.xml", 
+                    CreationCollisionOption.ReplaceExisting);
+                await vmfile.WriteAllTextAsync(SerializeReportsList(true));
+            }
+            else
+            {
+                modelfile = await folder.CreateFileAsync("reportmodels.xml",
+                    CreationCollisionOption.ReplaceExisting);
+                GenerateReportsList();
+                await modelfile.WriteAllTextAsync(SerializeReportsList());
+            }
+        }
+
+        public void Export()
+        {
+            SaveForExport();
             var emailMessenger = CrossMessaging.Current.EmailMessenger;
             if (emailMessenger.CanSendEmailAttachments && emailMessenger.CanSendEmailAttachments)
             {
@@ -135,7 +160,7 @@ namespace ScoutingCollection
                     .To("bd541331@ahschool.com")
                     .Subject("Xamarin Messaging Plugin")
                     .Body("Well hello there from Xam.Messaging.Plugin")
-                    .WithAttachment(file.Path, "xml")
+                    .WithAttachment(modelfile.Path, "xml")
                     .Build();
                 emailMessenger.SendEmail(email);
             }
@@ -151,11 +176,24 @@ namespace ScoutingCollection
 
         private string SerializeReportsList()
         {
+            return SerializeReportsList(false);
+        }
+
+        private string SerializeReportsList(bool serializevm)
+        {
             string results;
             XmlSerializer serializer;
             StringWriter textWriter = new StringWriter();
-            serializer = new XmlSerializer(typeof(List<Scout>));
-            serializer.Serialize(textWriter, (reportmodels as List<Scout>));
+            if (serializevm)
+            {
+                serializer = new XmlSerializer(typeof(List<ScoutVM>));
+                serializer.Serialize(textWriter, (reports as List<ScoutVM>));
+            }
+            else
+            {
+                serializer = new XmlSerializer(typeof(List<Scout>));
+                serializer.Serialize(textWriter, (reportmodels as List<Scout>));
+            }
             results = textWriter.ToString();
             return results;
         }
