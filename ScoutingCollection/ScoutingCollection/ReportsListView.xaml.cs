@@ -45,5 +45,17 @@ namespace ScoutingCollection
         {
             (BindingContext as MainViewModel).Export();
         }
+
+        async void onEdit(object sender, EventArgs e)
+        {
+            if((sender as ScoutVM).isMatch)
+            {
+                await DisplayAlert("Edit this match?", "", "Ok", "Cancel"); 
+            }
+            else
+            {
+                await DisplayAlert("Edit this report?", "", "Ok", "Cancel");
+            }
+        }
     }
 }

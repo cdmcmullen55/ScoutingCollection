@@ -119,10 +119,22 @@ namespace ScoutingCollection
             currentReport = new PitScoutingViewModel(team);
         }
 
+        public void InitPitScout(PitScoutingViewModel psvm)
+        {
+            currentIsMatch = false;
+            currentReport = psvm;
+        }
+
         public void InitMatchScout()
         {
             currentIsMatch = true;
             currentReport = new MatchVM(team, match);
+        }
+
+        public void InitMatchScout(MatchVM msvm)
+        {
+            currentIsMatch = true;
+            currentReport = msvm;
         }
 
         public void SaveForExport()

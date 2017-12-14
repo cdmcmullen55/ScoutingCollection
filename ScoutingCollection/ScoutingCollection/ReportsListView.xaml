@@ -39,6 +39,11 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Clicked="OnEdit" Text="Edit" CommandParameter="{Binding .}"/>
+                        <MenuItem Clicked="OnDelete" Text="Delete" CommandParameter="{Binding .}"/>
+                        <MenuItem Clicked="OnExport" Text="Export" CommandParameter="{Binding .}"/>
+                    </ViewCell.ContextActions>
                     <StackLayout>
                         <Label Text="{Binding Identifier}" 
                                Style="{DynamicResource ListItemTextStyle}" />
