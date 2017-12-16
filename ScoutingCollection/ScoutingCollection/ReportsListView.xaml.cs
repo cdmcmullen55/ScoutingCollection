@@ -46,16 +46,26 @@ namespace ScoutingCollection
             (BindingContext as MainViewModel).Export();
         }
 
-        async void onEdit(object sender, EventArgs e)
+        async void OnEdit(object sender, EventArgs e)
         {
-            if((sender as ScoutVM).isMatch)
+            if(((sender as MenuItem).BindingContext as ScoutVM).isMatch)
             {
                 await DisplayAlert("Edit this match?", "", "Ok", "Cancel"); 
             }
             else
             {
-                await DisplayAlert("Edit this report?", "", "Ok", "Cancel");
+                await DisplayAlert("Cannot edit matches", "", "Ok");
             }
+        }
+
+        public void OnDelete(object sender, EventArgs e)
+        {
+
+        }
+
+        public void OnExport(object sender, EventArgs e)
+        {
+
         }
     }
 }
