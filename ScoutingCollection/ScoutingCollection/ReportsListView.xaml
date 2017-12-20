@@ -22,7 +22,7 @@
         
         <ListView x:Name="report_list"
                   ItemsSource="{Binding Reports}"
-                  ItemTapped="Handle_ItemTapped"
+                  ItemSelected="Handle_ItemTapped"
                   CachingStrategy="RecycleElement">
             
     <!--Built in Cells-->
