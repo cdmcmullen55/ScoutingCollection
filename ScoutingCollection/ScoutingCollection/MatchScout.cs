@@ -8,11 +8,10 @@ namespace ScoutingCollection
 {
 	public class MatchScout : Scout
 	{
-		public int  match_number, auto_gear_load, auto_gear_cent, auto_gear_boil, auto_grnd_pckp, auto_load_pckp,
-			auto_gear_att, auto_gear_drop, tele_gear_drop, tele_gear_load, tele_gear_cent, tele_gear_boil,tele_gear_att, 
-            tele_grnd_pckp, tele_load_pckp, tkoff_speed, dfnse_rate;
-        //gears attempted shouldn't be interacre with -- just scored plus dropped
-		public bool auto_none, auto_break, tele_none, tele_break, tkoff_att, tkoff_succ, win, rotors;
+		public int  match_number, auto_switch, auto_scale, auto_exchange, tele_switch, tele_scale, tele_exchange, opp_switch, pckp_center, 
+            pckp_pyramid, pckp_exchange, climb_speed, dfnse_scaled, pckp_total, place_total;
+		public bool auto_none, auto_break, auto_pckp, auto_handles_rand, tele_none, tele_break, climb_att, climb_succ, defense, win, auto_quest, 
+            face_boss;
 		public String t_m_key, comp_key;
 
         public MatchScout()
