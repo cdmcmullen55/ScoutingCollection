@@ -84,19 +84,19 @@ namespace ScoutingCollection
             }
         }
 
-        public int Robot_Wt
+        public int Robot_Weight
         {
             set
             {
-                if ((report as PitScout).robot_wt != value)
+                if ((report as PitScout).robot_weight != value)
                 {
-                    (report as PitScout).robot_wt = value;
-                    OnPropertyChanged("Robot_Wt");
+                    (report as PitScout).robot_weight = value;
+                    OnPropertyChanged("Robot_Weight");
                 }
             }
             get
             {
-                return (report as PitScout).robot_wt;
+                return (report as PitScout).robot_weight;
             }
         }
 
@@ -116,19 +116,19 @@ namespace ScoutingCollection
             }
         }
 
-        public int Ground_Gear_Scale
+        public int climb_time
         {
             set
             {
-                if((report as PitScout).ground_gear_scale != value)
+                if((report as PitScout).climb_time != value)
                 {
-                    (report as PitScout).ground_gear_scale = value;
-                    OnPropertyChanged("Ground_Gear_Scale");
+                    (report as PitScout).climb_time = value;
+                    OnPropertyChanged("Climb_time");
                 }
             }
             get
             {
-                return (report as PitScout).ground_gear_scale;
+                return (report as PitScout).climb_time;
             }
         }
 

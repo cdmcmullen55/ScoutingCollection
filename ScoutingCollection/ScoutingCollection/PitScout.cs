@@ -8,11 +8,11 @@ namespace ScoutingCollection
 {
     public class PitScout : Scout
     {
-        public int climb_time, num_cubes, does_scale, baseline, cims_used, speed_fps, speed_scaled, robot_wt, ball_cap, run_sec, run_scale, strategy,
-             acc_scale;  
-        public bool fuel, vision, auto_low, tele_low, climb;
-
-        public String robot_key, drive_train, start_pos, file_name;
+        public int cims_used, speed_fps, speed_scaled, robot_weight, num_cubes, climb_time;
+        
+        public bool does_scale, auto_switch, auto_scale, auto_handles_rand, baseline, climb, vision;
+       
+        public String robot_key, drive_train, file_name;
 
         public PitScout()
         {

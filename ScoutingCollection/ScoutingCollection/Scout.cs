@@ -11,8 +11,9 @@ namespace ScoutingCollection
     [XmlInclude(typeof(MatchScout))]
     public abstract class Scout
     {
-        public int team;
+        public int team, start_pos;
         public bool is_match, baseline;
+
         public String team_key, comments;
 
         public int getTeam()
