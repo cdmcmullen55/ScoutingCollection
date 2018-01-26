@@ -43,259 +43,227 @@ namespace ScoutingCollection
             }
         }
 
-        public int AutoGearLoad
+        public int Auto_Switch
         {
             set
             {
-                if ((report as MatchScout).auto_gear_load != value)
+                if ((report as MatchScout).auto_switch != value)
                 {
-                    (report as MatchScout).auto_gear_load = value;
-                    OnPropertyChanged("AutoGearLoad");
+                    (report as MatchScout).auto_switch = value;
+                    OnPropertyChanged("Auto_Switch");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_gear_load;
+                return (report as MatchScout).auto_switch;
             }
         }
 
-        public int AutoGearCent
+        public int Auto_Scale
         {
             set
             {
-                if ((report as MatchScout).auto_gear_cent != value)
+                if ((report as MatchScout).auto_scale != value)
                 {
-                    (report as MatchScout).auto_gear_cent = value;
-                    OnPropertyChanged("AutoGearCent");
+                    (report as MatchScout).auto_scale = value;
+                    OnPropertyChanged("Auto_Scale");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_gear_cent;
+                return (report as MatchScout).auto_scale;
             }
         }
 
-        public int AutoGearBoil
+        public int Auto_Exchange
         {
             set
             {
-                if ((report as MatchScout).auto_gear_boil != value)
+                if ((report as MatchScout).auto_exchange != value)
                 {
-                    (report as MatchScout).auto_gear_boil = value;
-                    OnPropertyChanged("AutoGearBoil");
+                    (report as MatchScout).auto_exchange = value;
+                    OnPropertyChanged("Auto_Exchange");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_gear_boil;
+                return (report as MatchScout).auto_exchange;
             }
         }
 
-        public int AutoGrndPckp
+        public int Tele_Switch
         {
             set
             {
-                if ((report as MatchScout).auto_grnd_pckp != value)
+                if ((report as MatchScout).tele_switch != value)
                 {
-                    (report as MatchScout).auto_grnd_pckp = value;
-                    OnPropertyChanged("AutoGrndPckp");
+                    (report as MatchScout).tele_switch = value;
+                    OnPropertyChanged("Tele_Switch");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_grnd_pckp;
+                return (report as MatchScout).tele_switch;
             }
         }
 
-        public int AutoLoadPckp
+        public int Tele_Scale
         {
             set
             {
-                if ((report as MatchScout).auto_load_pckp != value)
+                if ((report as MatchScout).tele_scale != value)
                 {
-                    (report as MatchScout).auto_load_pckp = value;
-                    OnPropertyChanged("AutoLoadPckp");
+                    (report as MatchScout).tele_scale = value;
+                    OnPropertyChanged("Tele_Scale");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_load_pckp;
+                return (report as MatchScout).tele_scale;
             }
         }
 
-        public int AutoGearAtt
+        public int Tele_Exchange
         {
             set
             {
-                if ((report as MatchScout).auto_gear_att != value)
+                if ((report as MatchScout).tele_exchange != value)
                 {
-                    (report as MatchScout).auto_gear_att = value;
-                    OnPropertyChanged("AutoGearAtt");
+                    (report as MatchScout).tele_exchange = value;
+                    OnPropertyChanged("Tele_Exchange");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_gear_att;
+                return (report as MatchScout).tele_exchange;
             }
         }
 
-        public int AutoGearDrop
+        public int Opp_Switch
         {
             set
             {
-                if ((report as MatchScout).auto_gear_drop != value)
+                if ((report as MatchScout).opp_switch != value)
                 {
-                    (report as MatchScout).auto_gear_drop = value;
-                    OnPropertyChanged("AutoGearDrop");
+                    (report as MatchScout).opp_switch = value;
+                    OnPropertyChanged("Opp_Switch");
                 }
             }
             get
             {
-                return (report as MatchScout).auto_gear_drop;
+                return (report as MatchScout).opp_switch;
             }
         }
 
-        public int TeleGearDrop
+        public int Pckp_Center
         {
             set
             {
-                if ((report as MatchScout).tele_gear_drop != value)
+                if ((report as MatchScout).pckp_center != value)
                 {
-                    (report as MatchScout).tele_gear_drop = value;
-                    OnPropertyChanged("TeleGearDrop");
+                    (report as MatchScout).pckp_center = value;
+                    OnPropertyChanged("Pckp_Center");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_gear_drop;
+                return (report as MatchScout).pckp_center;
             }
         }
 
-        public int TeleGearLoad
+        public int Pckp_Pyramid
         {
             set
             {
-                if ((report as MatchScout).tele_gear_load != value)
+                if ((report as MatchScout).pckp_pyramid != value)
                 {
-                    (report as MatchScout).tele_gear_load = value;
-                    OnPropertyChanged("TeleGearLoad");
+                    (report as MatchScout).pckp_pyramid = value;
+                    OnPropertyChanged("Pckp_Pyramid");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_gear_load;
+                return (report as MatchScout).pckp_pyramid;
             }
         }
 
-        public int TeleGearCent
+        public int Pckp_Exchange
         {
             set
             {
-                if ((report as MatchScout).tele_gear_cent != value)
+                if ((report as MatchScout).pckp_exchange != value)
                 {
-                    (report as MatchScout).tele_gear_cent = value;
-                    OnPropertyChanged("TeleGearCent");
+                    (report as MatchScout).pckp_exchange = value;
+                    OnPropertyChanged("Pckp_Exchange");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_gear_cent;
+                return (report as MatchScout).pckp_exchange;
             }
         }
 
-        public int TeleGearBoil
+        public int Pckp_Total
         {
             set
             {
-                if ((report as MatchScout).tele_gear_boil != value)
+                if ((report as MatchScout).pckp_total != value)
                 {
-                    (report as MatchScout).tele_gear_boil = value;
-                    OnPropertyChanged("TeleGearBoil");
+                    (report as MatchScout).pckp_total = value;
+                    OnPropertyChanged("Pckp_Total");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_gear_boil;
+                return (report as MatchScout).pckp_total;
             }
         }
 
-        public int TeleGearAtt
+        public int Place_Total
         {
             set
             {
-                if ((report as MatchScout).tele_gear_att != value)
+                if ((report as MatchScout).place_total != value)
                 {
-                    (report as MatchScout).tele_gear_att = value;
-                    OnPropertyChanged("TeleGearAtt");
+                    (report as MatchScout).place_total = value;
+                    OnPropertyChanged("Place_Total");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_gear_att;
+                return (report as MatchScout).place_total;
             }
         }
 
-        public int TeleGrndPckp
+        public int Climb_Speed
         {
             set
             {
-                if ((report as MatchScout).tele_grnd_pckp != value)
+                if((report as MatchScout).climb_speed != value)
                 {
-                    (report as MatchScout).tele_grnd_pckp = value;
-                    OnPropertyChanged("TeleGrndPckp");
+                    (report as MatchScout).climb_speed = value;
+                    OnPropertyChanged("Climb_Speed");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_grnd_pckp;
+                return (report as MatchScout).climb_speed;
             }
         }
 
-        public int TeleLoadPckp
+        public int Dfnse_Scaled
         {
             set
             {
-                if ((report as MatchScout).tele_load_pckp != value)
+                if ((report as MatchScout).dfnse_scaled != value)
                 {
-                    (report as MatchScout).tele_load_pckp = value;
-                    OnPropertyChanged("TeleLoadPckp");
+                    (report as MatchScout).dfnse_scaled = value;
+                    OnPropertyChanged("Dfnse_Scaled");
                 }
             }
             get
             {
-                return (report as MatchScout).tele_load_pckp;
-            }
-        }
-
-        public int TkoffSpeed
-        {
-            set
-            {
-                if ((report as MatchScout).tkoff_speed != value)
-                {
-                    (report as MatchScout).tkoff_speed = value;
-                    OnPropertyChanged("TkoffSpeed");
-                }
-            }
-            get
-            {
-                return (report as MatchScout).tkoff_speed;
-            }
-        }
-
-        public int DfnseRate
-        {
-            set
-            {
-                if ((report as MatchScout).dfnse_rate != value)
-                {
-                    (report as MatchScout).dfnse_rate = value;
-                    OnPropertyChanged("DfnseRate");
-                }
-            }
-            get
-            {
-                return (report as MatchScout).dfnse_rate;
+                return (report as MatchScout).dfnse_scaled;
             }
         }
 
@@ -347,6 +315,38 @@ namespace ScoutingCollection
             }
         }
 
+        public bool Auto_Pckp
+        {
+            set
+            {
+                if((report as MatchScout).auto_pckp != value)
+                {
+                    (report as MatchScout).auto_pckp = value;
+                    OnPropertyChanged("Auto_Pckp");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_pckp;
+            }
+        }
+
+        public bool Auto_Handles_Rand
+        {
+            set
+            {
+                if((report as MatchScout).auto_handles_rand != value)
+                {
+                    (report as MatchScout).auto_handles_rand = value;
+                    OnPropertyChanged("Auto_Handles_Rand");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_handles_rand;
+            }
+        }
+
         public bool TeleNone
         {
             set
@@ -395,35 +395,35 @@ namespace ScoutingCollection
             }
         }
 
-        public bool TkoffAtt
+        public bool Climb_Att
         {
             set
             {
-                if ((report as MatchScout).tkoff_att != value)
+                if ((report as MatchScout).climb_att != value)
                 {
-                    (report as MatchScout).tkoff_att = value;
-                    OnPropertyChanged("TkoffAtt");
+                    (report as MatchScout).climb_att = value;
+                    OnPropertyChanged("Climb_Att");
                 }
             }
             get
             {
-                return (report as MatchScout).tkoff_att;
+                return (report as MatchScout).climb_att;
             }
         }
 
-        public bool TkoffSucc
+        public bool Climb_Succ
         {
             set
             {
-                if ((report as MatchScout).tkoff_succ != value)
+                if ((report as MatchScout).climb_succ != value)
                 {
-                    (report as MatchScout).tkoff_succ = value;
-                    OnPropertyChanged("TkoffSucc");
+                    (report as MatchScout).climb_succ = value;
+                    OnPropertyChanged("Cilmb_Succ");
                 }
             }
             get
             {
-                return (report as MatchScout).tkoff_succ;
+                return (report as MatchScout).climb_succ;
             }
         }
 
@@ -443,19 +443,31 @@ namespace ScoutingCollection
             }
         }
 
-        public bool Rotors
+        public bool Auto_Quest
         {
             set
             {
-                if ((report as MatchScout).rotors != value)
+                if ((report as MatchScout).auto_quest != value)
                 {
-                    (report as MatchScout).rotors = value;
-                    OnPropertyChanged("Rotors");
+                    (report as MatchScout).auto_quest = value;
+                    OnPropertyChanged("Auto_Quest");
                 }
             }
             get
             {
-                return (report as MatchScout).rotors;
+                return (report as MatchScout).auto_quest;
+            }
+        }
+
+        public bool Face_Boss
+        {
+            set
+            {
+                if((report as MatchScout).face_boss != value)
+                {
+                    (report as MatchScout).face_boss = value;
+                    OnPropertyChanged("Face_Boss");
+                }
             }
         }
 
@@ -704,9 +716,13 @@ namespace ScoutingCollection
             {
                 return "2018flwp";
             }
-            if (comp_name == "Orlando")
+            if (comp_name == "Palmetto")
             {
-                return "2018flor";
+                return "2018scmp";
+            }
+            if (comp_name == "Pittsburgh")
+            {
+                return "2018paca";
             }
             else
                 return "unknown";

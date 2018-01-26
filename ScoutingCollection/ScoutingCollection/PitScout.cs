@@ -10,7 +10,7 @@ namespace ScoutingCollection
     {
         public int cims_used, speed_fps, speed_scaled, robot_weight, num_cubes, climb_time;
         
-        public bool does_scale, auto_switch, auto_scale, auto_handles_rand, baseline, climb, vision;
+        public bool does_scale, auto_switch, auto_scale, auto_handles_rand, climb, vision;
        
         public String robot_key, drive_train, file_name;
 

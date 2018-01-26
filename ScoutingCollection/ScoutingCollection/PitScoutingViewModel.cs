@@ -31,7 +31,6 @@ namespace ScoutingCollection
         {
             report = new PitScout(team_number);
             isMatch = false;
-            TeleGears = "0";
         }
 
         
@@ -100,135 +99,23 @@ namespace ScoutingCollection
             }
         }
 
-        public int Ball_Cap
+        public int Num_Cubes
         {
             set
             {
-                if ((report as PitScout).ball_cap != value)
+                if ((report as PitScout).num_cubes != value)
                 {
-                    (report as PitScout).ball_cap = value;
-                    OnPropertyChanged("Ball_Cap");
+                    (report as PitScout).num_cubes = value;
+                    OnPropertyChanged("Num_Cubes");
                 }
             }
             get
             {
-                return (report as PitScout).ball_cap;
+                return (report as PitScout).num_cubes;
             }
         }
-
-        public int climb_time
-        {
-            set
-            {
-                if((report as PitScout).climb_time != value)
-                {
-                    (report as PitScout).climb_time = value;
-                    OnPropertyChanged("Climb_time");
-                }
-            }
-            get
-            {
-                return (report as PitScout).climb_time;
-            }
-        }
-
-        public int AutoBall
-        {
-            set
-            {
-                if ((report as PitScout).auto_ball != value)
-                {
-                    (report as PitScout).auto_ball = value;
-                    OnPropertyChanged("Auto_Fuel");
-                }
-            }
-            get
-            {
-                return (report as PitScout).auto_ball;
-            }
-        }
-
-        public int Run_Sec
-        {
-            set
-            {
-                if ((report as PitScout).run_sec != value)
-                {
-                    (report as PitScout).run_sec = value;
-                    OnPropertyChanged("Run_Sec");
-                }
-            }
-            get
-            {
-                return (report as PitScout).run_sec;
-            }
-        }
-
-        public int Run_Scale
-        {
-            set
-            {
-                if ((report as PitScout).run_scale != value)
-                {
-                    (report as PitScout).run_scale = value;
-                    OnPropertyChanged("Run_Scale");
-                }
-            }
-            get
-            {
-                return (report as PitScout).run_scale;
-            }
-        }
-
-        public string TeleGears
-        {
-            set
-            {
-                if ((report as PitScout).tele_gears.ToString() != value && value != null)
-                {
-                    (report as PitScout).tele_gears = Int32.Parse(value);
-                    OnPropertyChanged("TeleGears");
-                }
-            }
-            get
-            {
-                return ((report as PitScout).tele_gears).ToString();
-            }
-        }
-
-        public int TeleFuel
-        {
-            set
-            {
-                if ((report as PitScout).tele_balls != value)
-                {
-                    (report as PitScout).tele_balls = value;
-                    OnPropertyChanged("TeleFuel");
-                }
-            }
-            get
-            {
-                return (report as PitScout).tele_balls;
-            }
-        }
-
-        public int AccScale
-        {
-            set
-            {
-                if((report as PitScout).acc_scale != value)
-                {
-                    (report as PitScout).acc_scale = value;
-                    OnPropertyChanged("AccScale");
-                }
-            }
-            get
-            {
-                return (report as PitScout).acc_scale;
-            }
-        }
-
-        public int ClimbTime
+        
+        public int Climb_Time
         {
             set
             {
@@ -244,67 +131,51 @@ namespace ScoutingCollection
             }
         }
 
-        public string Strategy
+        public bool Does_Scale
         {
             set
             {
-                if((report as PitScout).strategy != ParseStrategy(value) && ParseStrategy(value) != -1)
+                if ((report as PitScout).does_scale != value)
                 {
-                    (report as PitScout).strategy = ParseStrategy(value);
-                    OnPropertyChanged("Strategy");
+                    (report as PitScout).does_scale = value;
+                    OnPropertyChanged("Does_Scale");
                 }
             }
             get
             {
-                return ParseStrategy((report as PitScout).strategy);
+                return (report as PitScout).does_scale;
             }
         }
 
-        public bool Fuel
+        public bool Auto_Switch
         {
             set
             {
-                if ((report as PitScout).fuel != value)
+                if ((report as PitScout).auto_switch != value)
                 {
-                    (report as PitScout).fuel = value;
-                    OnPropertyChanged("Fuel");
+                    (report as PitScout).auto_switch = value;
+                    OnPropertyChanged("Auto_Switch");
                 }
             }
             get
             {
-                return (report as PitScout).fuel;
+                return (report as PitScout).auto_switch;
             }
         }
 
-        public bool Gears
+        public bool Auto_Scale
         {
             set
             {
-                if ((report as PitScout).gears != value)
+                if ((report as PitScout).auto_scale != value)
                 {
-                    (report as PitScout).gears = value;
-                    OnPropertyChanged("Gears");
+                    (report as PitScout).auto_scale = value;
+                    OnPropertyChanged("Auto_Scale");
                 }
             }
             get
             {
-                return (report as PitScout).gears;
-            }
-        }
-
-        public bool Shift_Gears
-        {
-            set
-            {
-                if ((report as PitScout).shift_gears != value)
-                {
-                    (report as PitScout).shift_gears = value;
-                    OnPropertyChanged("Shift_Gears");
-                }
-            }
-            get
-            {
-                return (report as PitScout).shift_gears;
+                return (report as PitScout).auto_scale;
             }
         }
 
@@ -324,51 +195,19 @@ namespace ScoutingCollection
             }
         }
 
-        public bool Active_Gear
+        public bool Auto_Handles_Rand
         {
             set
             {
-                if((report as PitScout).active_gear != value)
+                if((report as PitScout).auto_handles_rand != value)
                 {
-                    (report as PitScout).active_gear = value;
-                    OnPropertyChanged("Active_Gear");
+                    (report as PitScout).auto_handles_rand = value;
+                    OnPropertyChanged("Auto_Handles_Rand");
                 }
             }
             get
             {
-                return (report as PitScout).active_gear;
-            }
-        }
-
-        public bool Ground_Gear
-        {
-            set
-            {
-                if ((report as PitScout).ground_gear != value)
-                {
-                    (report as PitScout).ground_gear = value;
-                    OnPropertyChanged("Ground_Gear");
-                }
-            }
-            get
-            {
-                return (report as PitScout).ground_gear;
-            }
-        }
-
-        public bool Ground_Ball
-        {
-            set
-            {
-                if((report as PitScout).ground_ball != value)
-                {
-                    (report as PitScout).ground_ball = value;
-                    OnPropertyChanged("Ground_Ball");
-                }
-            }
-            get
-            {
-                return (report as PitScout).ground_ball;
+                return (report as PitScout).auto_handles_rand;
             }
         }
 
@@ -385,70 +224,6 @@ namespace ScoutingCollection
             get
             {
                 return (report as PitScout).baseline;
-            }
-        }
-
-        public bool AutoGear
-        {
-            set
-            {
-                if ((report as PitScout).auto_gear != value)
-                {
-                    (report as PitScout).auto_gear = value;
-                    OnPropertyChanged("Auto_Gear");
-                }
-            }
-            get
-            {
-                return (report as PitScout).auto_gear;
-            }
-        }
-
-        public bool AutoLow
-        {
-            set
-            {
-                if((report as PitScout).auto_low != value)
-                {
-                    (report as PitScout).auto_low = value;
-                    OnPropertyChanged("AutoLow");
-                }
-            }
-            get
-            {
-                return (report as PitScout).auto_low;
-            }
-        }
-
-        public bool TeleLow
-        {
-            set
-            {
-                if((report as PitScout).tele_low != value)
-                {
-                    (report as PitScout).tele_low = value;
-                    OnPropertyChanged("TeleLow");
-                }
-            }
-            get
-            {
-                return (report as PitScout).tele_low;
-            }
-        }
-
-        public bool Climb
-        {
-            set
-            {
-                if((report as PitScout).climb != value)
-                {
-                    (report as PitScout).climb = value;
-                    OnPropertyChanged("Climb");
-                }
-            }
-            get
-            {
-                return (report as PitScout).climb;
             }
         }
        
@@ -468,7 +243,7 @@ namespace ScoutingCollection
             }
         }
 
-        public String Start_Pos
+        public int Start_Pos
         {
             set
             {
@@ -506,30 +281,5 @@ namespace ScoutingCollection
         {
             this.File_Name = "Pit_"+(report as PitScout).team;
         }
-
-        private int ParseStrategy(string strat)
-        {
-            if (strat == null)
-                return -1;
-            if (strat.Equals("Offense"))
-                return 0;
-            else if (strat.Equals("Defense"))
-                return 1;
-            else
-                return 2;
-        }
-
-        private string ParseStrategy(int strat)
-        {
-            if (strat == 0)
-                return "Offense";
-            else if (strat == 1)
-                return "Defense";
-            else
-                return "Both";
-        }
-
-
-
     }
 }

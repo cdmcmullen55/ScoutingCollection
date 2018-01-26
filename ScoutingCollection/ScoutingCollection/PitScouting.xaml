@@ -6,9 +6,5 @@
   <!--Pages can be added as references or inline-->
     <local:PitScoutingGeneral/>
 
-    <local:PitScoutingAuto/>
-
-    <local:PitScoutingTeleOp/>
-
     <local:PitScoutingReport/>
 </TabbedPage>
