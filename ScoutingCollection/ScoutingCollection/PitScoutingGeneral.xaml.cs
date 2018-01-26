@@ -17,18 +17,7 @@ namespace ScoutingCollection
         public PitScoutingGeneral()
         {
             InitializeComponent();
-            UsesFuel.IsToggled = true;
-            UsesGears.IsToggled = true;
-            Speed_fps.IsEnabled = FPS_known.IsToggled;
-            Speed_scale.IsEnabled = !FPS_known.IsToggled;
-            BallCap.IsEnabled = UsesFuel.IsToggled;
-            Ground_gear.IsEnabled = UsesGears.IsToggled;
-            Active_gear.IsEnabled = UsesGears.IsToggled;
-            Ground_gear_scale.IsEnabled = Ground_gear.IsToggled;
-            Gear_time_known.IsEnabled = UsesGears.IsToggled;
-            Gear_run_sec.IsEnabled = Gear_time_known.IsToggled;
-            Gear_run_scale.IsEnabled = !Gear_time_known.IsToggled;
-            Ground_ball_pickup.IsEnabled = UsesFuel.IsToggled;
+            
         }
 
         private void FPS_known_Toggled(object sender, ToggledEventArgs e)

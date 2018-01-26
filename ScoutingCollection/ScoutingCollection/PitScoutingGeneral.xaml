@@ -18,22 +18,6 @@
             <StackLayout Padding="10,20,10,20">
                 <Label Text="{Binding CurrentReport.Team, StringFormat='Team {0}'}" FontSize="Large"/>
 
-                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Fuel: " FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-                    <Switch x:Name="UsesFuel" 
-                            Toggled="UsesFuel_Toggled" 
-                            HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Fuel, Mode=OneWayToSource}"/>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Gears: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                    <Switch x:Name="UsesGears" 
-                            Toggled="UsesGears_Toggled" 
-                            HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Gears, Mode=OneWayToSource}"/>
-                </StackLayout>
-
                 <Entry x:Name="DriveTrain" 
                        Placeholder="Drive Train" 
                        TextChanged="DriveTrain_TextChanged"
@@ -76,27 +60,13 @@
                         Maximum="5"
                         Minimum="1" 
                         ValueChanged="Speed_scale_ValueChanged"
-                        Value="{Binding CurrentReport.Speed_Scale, Mode=OneWayToSource}"/>
-
-                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Shifts gears: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                    <Switch x:Name="Shifts_gears" 
-                            Toggled="Shifts_gears_Toggled"
-                            HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Shifts_Gears, Mode=OneWayToSource}"/>
-                </StackLayout>
+                        Value="{Binding CurrentReport.Speed_Scaled, Mode=OneWayToSource}"/>
 
                 <Entry x:Name="Weight" 
                        Placeholder="Weight" 
                        Keyboard="Telephone" 
                        TextChanged="Weight_TextChanged"
-                       Text="{Binding CurrentReport.Robot_Wt, Mode=OneWayToSource}"/>
-
-                <Entry x:Name="BallCap" 
-                       Placeholder="Ball Capacity" 
-                       Keyboard="Telephone" 
-                       TextChanged="BallCap_TextChanged"
-                       Text="{Binding CurrentReport.Ball_Cap, Mode=OneWayToSource}"/>
+                       Text="{Binding CurrentReport.Robot_Weight, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Vision: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
@@ -107,19 +77,24 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Active Gear Dropoff: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                    <Switch x:Name="Active_gear" 
-                            Toggled="Active_gear_Toggled"
+                    <Label Text="Scale: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Does_Scale"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Active_Gear, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.Does_Scale, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Ground Gear Pickup: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                    <Switch x:Name="Ground_gear" 
-                            Toggled="Ground_gear_Toggled"
+                    <Label Text="Auto Switch: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Auto_Switch" 
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Ground_Gear, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.Auto_Switch, Mode=OneWayToSource}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Auto Scale: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Auto_Scale"
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding CurrentReport.Auto_Scale, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
