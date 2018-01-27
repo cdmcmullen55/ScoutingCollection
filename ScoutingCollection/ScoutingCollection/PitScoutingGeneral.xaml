@@ -94,7 +94,8 @@
                     <Label Text="Auto Scale: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="Auto_Scale"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Auto_Scale, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.Auto_Scale, Mode=OneWayToSource}"
+                            IsEnabled="{Binding CurrentReport.Does_Scale, Mode=OneWay}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -102,6 +103,13 @@
                     <Switch x:Name="Baseline"
                             HorizontalOptions="EndAndExpand"
                             IsToggled="{Binding CurrentReport.Baseline, Mode=OneWayToSource}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Randomization: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Handles_Rand"
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding CurrentReport.Auto_Handles_Rand, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -123,18 +131,35 @@
                             IsToggled="{Binding CurrentReport.Climb, Mode=OneWayToSource}"/>
                 </StackLayout>
 
-                <Picker x:Name="Strategy" 
-                        Title="Strategy" 
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Climb Time: " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}"
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Climb_Time}"/>
+                </StackLayout>
+
+                <Slider x:Name="Climb_Time" 
+                        Maximum="20" 
+                        Minimum="1" 
+                        Value="{Binding CurrentReport.Climb_Time, Mode=OneWayToSource}"
+                        IsEnabled="{Binding CurrentReport.Climb, Mode=OneWay}"/>
+
+                <Picker x:Name="Start_Pos" 
+                        Title="Start Position" 
                         SelectedIndexChanged="Strategy_SelectedIndexChanged"
-                        SelectedItem="{Binding CurrentReport.Strategy, Mode=OneWayToSource}">
+                        SelectedItem="{Binding CurrentReport.Start_Pos, Mode=OneWayToSource}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Offense</x:String>
-                            <x:String>Defense</x:String>
-                            <x:String>Both</x:String>
+                            <x:String>Left</x:String>
+                            <x:String>Center</x:String>
+                            <x:String>Right</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
+
+                <Label Text="Comments: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                <Editor x:Name="Comments"
+                        Text="{Binding CurrentReport.Comments, Mode=OneWayToSource}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

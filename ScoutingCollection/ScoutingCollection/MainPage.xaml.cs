@@ -58,11 +58,6 @@ namespace ScoutingCollection
                                    Int32.TryParse(Team.Text, out result);
         }
 
-        private void Match_Completed(object sender, EventArgs e)
-        {
-
-        }
-
         async void ReportList_Clicked(object sender, EventArgs e)
         {
             var ReportList = new ReportsListView(this.BindingContext as MainViewModel);

@@ -43,6 +43,8 @@ namespace ScoutingCollection
             }
         }
 
+        
+
         public int Auto_Switch
         {
             set
@@ -540,6 +542,70 @@ namespace ScoutingCollection
                 else
                     return grnd_pckp;
             }
+        }
+
+        public override int ParsePosition(string pos)
+        {
+            if (pos == null)
+            {
+                return -1;
+            }
+            if (pos.Equals("Red 1"))
+            {
+                return 0;
+            }
+            if (pos.Equals("Red 2"))
+            {
+                return 1;
+            }
+            if (pos.Equals("Red 3"))
+            {
+                return 2;
+            }
+            if (pos.Equals("Blue 1"))
+            {
+                return 3;
+            }
+            if (pos.Equals("Blue 2"))
+            {
+                return 4;
+            }
+            if (pos.Equals("Blue 3"))
+            {
+                return 5;
+            }
+            else
+                return -1;
+        }
+
+        public override string ParsePosition(int pos)
+        {
+            if (pos == 0)
+            {
+                return "Red 1";
+            }
+            if(pos == 1)
+            {
+                return "Red 2";
+            }
+            if(pos == 2)
+            {
+                return "Red 3";
+            }
+            if(pos == 3)
+            {
+                return "Blue 1";
+            }
+            if(pos == 4)
+            {
+                return "Blue 2";
+            }
+            if (pos == 5)
+            {
+                return "Blue 3";
+            }
+            else
+                return null;
         }
 
         public void setButtonProperties()

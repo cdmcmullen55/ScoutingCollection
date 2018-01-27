@@ -259,22 +259,6 @@ namespace ScoutingCollection
             }
         }
 
-        public int Start_Pos
-        {
-            set
-            {
-                if((report as PitScout).start_pos != value)
-                {
-                    (report as PitScout).start_pos = value;
-                    OnPropertyChanged("Start_Pos");
-                }
-            }
-            get
-            {
-                return (report as PitScout).start_pos;
-            }
-        }
-
         public string Comments
         {
             set
@@ -307,7 +291,45 @@ namespace ScoutingCollection
             }
         }
 
-        
+        public override int ParsePosition(string pos)
+        {
+            if(pos == null)
+            {
+                return -1;
+            }
+            if (pos.Equals("Left"))
+            {
+                return 0;
+            }
+            if (pos.Equals("Center"))
+            {
+                return 1;
+            }
+            if (pos.Equals("Right"))
+            {
+                return 2;
+            }
+            else
+                return -1;
+        }
+
+        public override string ParsePosition(int pos)
+        {
+            if(pos == 0)
+            {
+                return "Left";
+            }
+            if(pos == 1)
+            {
+                return "Center";
+            }
+            if (pos == 2)
+            {
+                return "Right";
+            }
+            else
+                return null;
+        }
 
         private void SetFile_Name()
         {

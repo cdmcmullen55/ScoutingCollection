@@ -38,6 +38,22 @@ namespace ScoutingCollection
             }
         }
 
+        public string Start_Pos
+        {
+            set
+            {
+                if ((report as PitScout).start_pos != ParsePosition(value) && ParsePosition(value) != -1)
+                {
+                    (report as PitScout).start_pos = ParsePosition(value);
+                    OnPropertyChanged("Strategy");
+                }
+            }
+            get
+            {
+                return ParsePosition((report as PitScout).start_pos);
+            }
+        }
+
         public string IsMatch
         {
             /*set
@@ -141,6 +157,10 @@ namespace ScoutingCollection
             preview = textWriter.ToString();
             OnPropertyChanged("Preview");
         }
+
+        public abstract int ParsePosition(string pos);
+
+        public abstract string ParsePosition(int pos);
 
         private void SetTeamKey()
         {

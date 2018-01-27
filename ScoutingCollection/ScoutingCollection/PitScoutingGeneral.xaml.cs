@@ -16,105 +16,13 @@ namespace ScoutingCollection
 
         public PitScoutingGeneral()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         private void FPS_known_Toggled(object sender, ToggledEventArgs e)
         {
             Speed_fps.IsEnabled = FPS_known.IsToggled;
             Speed_scale.IsEnabled = !FPS_known.IsToggled;
-        }
-
-        private void UsesFuel_Toggled(object sender, ToggledEventArgs e)
-        {
-            BallCap.IsEnabled = UsesFuel.IsToggled;
-            Ground_ball_pickup.IsEnabled = UsesFuel.IsToggled;
-        }
-
-        private void UsesGears_Toggled(object sender, ToggledEventArgs e)
-        {
-            Active_gear.IsEnabled = UsesGears.IsToggled;
-            Ground_gear.IsEnabled = UsesGears.IsToggled;
-            Gear_time_known.IsEnabled = UsesGears.IsToggled;
-        }
-
-        private void Shifts_gears_Toggled(object sender, ToggledEventArgs e)
-        {
-        }
-
-        private void Vision_Toggled(object sender, ToggledEventArgs e)
-        {
-        }
-
-        private void Active_gear_Toggled(object sender, ToggledEventArgs e)
-        {
-        }
-
-        private void Ground_gear_Toggled(object sender, ToggledEventArgs e)
-        {
-            Ground_gear_scale.IsEnabled = Ground_gear.IsToggled;
-        }
-
-        private void DriveTrain_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void CIMs_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Speed_fps_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-
-        }
-
-        private void Speed_scale_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-
-        }
-
-        private void Weight_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void BallCap_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Ground_scale_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-
-        }
-
-        private void Gear_time_known_Toggled(object sender, ToggledEventArgs e)
-        {
-            Gear_run_sec.IsEnabled = Gear_time_known.IsToggled;
-            Gear_run_scale.IsEnabled = !Gear_time_known.IsToggled;
-        }
-
-        private void Gear_run_sec_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-
-        }
-
-        private void Gear_run_scale_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-
-        }
-
-        private void Ground_ball_pickup_Toggled(object sender, ToggledEventArgs e)
-        {
-
-        }
-
-        private void Strategy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
