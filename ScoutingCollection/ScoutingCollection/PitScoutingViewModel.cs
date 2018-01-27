@@ -226,6 +226,22 @@ namespace ScoutingCollection
                 return (report as PitScout).baseline;
             }
         }
+
+        public bool Climb
+        {
+            set
+            {
+                if((report as PitScout).climb != value)
+                {
+                    (report as PitScout).climb = value;
+                    OnPropertyChanged("Climb");
+                }
+            }
+            get
+            {
+                return (report as PitScout).climb;
+            }
+        }
        
         public String Drive_Train
         {
@@ -256,6 +272,22 @@ namespace ScoutingCollection
             get
             {
                 return (report as PitScout).start_pos;
+            }
+        }
+
+        public string Comments
+        {
+            set
+            {
+                if((report as PitScout).comments != value)
+                {
+                    (report as PitScout).comments = value;
+                    OnPropertyChanged("Comments");
+                }
+            }
+            get
+            {
+                return (report as PitScout).comments;
             }
         }
 

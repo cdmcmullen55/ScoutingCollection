@@ -97,58 +97,30 @@
                             IsToggled="{Binding CurrentReport.Auto_Scale, Mode=OneWayToSource}"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Ground Gears (1-5): " FontSize="Medium"/>
-                    <Label Text="{Binding Path=Value}"
-                           FontSize="Medium"
-                           BindingContext="{Reference Name=Ground_gear_scale}"/>
-                </StackLayout>
-
-                <Slider x:Name="Ground_gear_scale" 
-                        Maximum="5" 
-                        Minimum="1" 
-                        ValueChanged="Ground_scale_ValueChanged"
-                        Value="{Binding CurrentReport.Ground_Gear_Scale, Mode=OneWayToSource}"/>
-
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Gear Run Time known? " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                    <Switch x:Name="Gear_time_known"
-                            Toggled="Gear_time_known_Toggled"
-                            HorizontalOptions="EndAndExpand"/>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Gear Run (sec): " FontSize="Medium"/>
-                    <Label Text="{Binding Path=Value}" 
-                           FontSize="Medium"
-                           BindingContext="{Reference Name=Gear_run_sec}"/>
-                </StackLayout>
-
-                <Slider x:Name="Gear_run_sec" 
-                        Maximum="25" 
-                        Minimum="5" 
-                        ValueChanged="Gear_run_sec_ValueChanged"
-                        Value="{Binding CurrentReport.Run_Sec, Mode=OneWayToSource}"/>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Gear Run (1-5): " FontSize="Medium"/>
-                    <Label Text="{Binding Path=Value}"
-                           FontSize="Medium"
-                           BindingContext="{Reference Name=Gear_run_scale}"/>
-                </StackLayout>
-
-                <Slider x:Name="Gear_run_scale" 
-                        Maximum="5" 
-                        Minimum="1" 
-                        ValueChanged="Gear_run_scale_ValueChanged"
-                        Value="{Binding CurrentReport.Run_Scale, Mode=OneWayToSource}"/>
-
-                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Ground Ball Pickup: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                    <Switch x:Name="Ground_ball_pickup"
-                            Toggled="Ground_ball_pickup_Toggled"
+                    <Label Text="Baseline: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Baseline"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.Ground_Ball, Mode=OneWayToSource}"/>
+                            IsToggled="{Binding CurrentReport.Baseline, Mode=OneWayToSource}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Cubes Placed: " FontSize="Medium"/>
+                    <Label Text="{Binding Path=Value}"
+                           FontSize="Medium"
+                           BindingContext="{Reference Name=Num_Cubes}"/>
+                </StackLayout>
+
+                <Slider x:Name="Num_Cubes" 
+                        Maximum="10" 
+                        Minimum="0" 
+                        Value="{Binding CurrentReport.Num_Cubes, Mode=OneWayToSource}"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Climb: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="Climb"
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding CurrentReport.Climb, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <Picker x:Name="Strategy" 
