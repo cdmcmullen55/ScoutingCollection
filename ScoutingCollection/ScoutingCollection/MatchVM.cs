@@ -43,8 +43,6 @@ namespace ScoutingCollection
             }
         }
 
-        
-
         public int Auto_Switch
         {
             set

@@ -20,13 +20,11 @@
 
                 <Entry x:Name="DriveTrain" 
                        Placeholder="Drive Train" 
-                       TextChanged="DriveTrain_TextChanged"
                        Text="{Binding CurrentReport.Drive_Train, Mode=OneWayToSource}"/>
 
                 <Entry x:Name="CIMs" 
                        Placeholder="CIMs Used" 
                        Keyboard="Telephone" 
-                       TextChanged="CIMs_TextChanged"
                        Text="{Binding CurrentReport.CIMs_Used, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -46,7 +44,6 @@
                 <Slider x:Name="Speed_fps" 
                         Maximum="25" 
                         Minimum="2"
-                        ValueChanged="Speed_fps_ValueChanged"
                         Value="{Binding CurrentReport.Speed_FPS, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal">
@@ -59,19 +56,16 @@
                 <Slider x:Name="Speed_scale" 
                         Maximum="5"
                         Minimum="1" 
-                        ValueChanged="Speed_scale_ValueChanged"
                         Value="{Binding CurrentReport.Speed_Scaled, Mode=OneWayToSource}"/>
 
                 <Entry x:Name="Weight" 
                        Placeholder="Weight" 
                        Keyboard="Telephone" 
-                       TextChanged="Weight_TextChanged"
                        Text="{Binding CurrentReport.Robot_Weight, Mode=OneWayToSource}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Vision: " FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="Vision" 
-                            Toggled="Vision_Toggled"
                             HorizontalOptions="EndAndExpand"
                             IsToggled="{Binding CurrentReport.Vision, Mode=OneWayToSource}"/>
                 </StackLayout>
@@ -146,7 +140,6 @@
 
                 <Picker x:Name="Start_Pos" 
                         Title="Start Position" 
-                        SelectedIndexChanged="Strategy_SelectedIndexChanged"
                         SelectedItem="{Binding CurrentReport.Start_Pos, Mode=OneWayToSource}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
