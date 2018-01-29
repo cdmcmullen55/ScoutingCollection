@@ -10,16 +10,16 @@ namespace ScoutingCollection
 {
     public class MatchVM : ScoutVM
     {
-        public bool gears_selected, tele;
+        public bool place_selected, tele;
 
-        public Button load_gear, cent_gear, boil_gear, drop_gear, grnd_pckp, load_pckp;
+        public Button place_scale, place_switch, place_opp, place_exch, pckp_exch, pckp_pyr, pckp_grnd;
 
         public ICommand IncrementCommand { private set; get; }
 
         public MatchVM(int team_num, int match_num)
         {
             report = new MatchScout(team_num, match_num);
-            gears_selected = true;
+            place_selected = true;
             tele = false;
             isMatch = true;
             IncrementCommand = new Command<string>(Increment);
@@ -157,19 +157,19 @@ namespace ScoutingCollection
             }
         }
 
-        public int Pckp_Center
+        public int Pckp_Ground
         {
             set
             {
-                if ((report as MatchScout).pckp_center != value)
+                if ((report as MatchScout).pckp_grnd != value)
                 {
-                    (report as MatchScout).pckp_center = value;
-                    OnPropertyChanged("Pckp_Center");
+                    (report as MatchScout).pckp_grnd = value;
+                    OnPropertyChanged("Pckp_Ground");
                 }
             }
             get
             {
-                return (report as MatchScout).pckp_center;
+                return (report as MatchScout).pckp_grnd;
             }
         }
 
@@ -509,12 +509,12 @@ namespace ScoutingCollection
         {
             get
             {
-                if (gears_selected)
+                if (place_selected)
                 {
-                    return load_gear;
+                    return place_scale;
                 }
                 else
-                    return drop_gear;
+                    return pckp_pyr;
             }
         }
 
@@ -522,12 +522,12 @@ namespace ScoutingCollection
         {
             get
             {
-                if (gears_selected)
+                if (place_selected)
                 {
-                    return cent_gear;
+                    return place_switch;
                 }
                 else
-                    return load_pckp;
+                    return pckp_grnd;
             }
         }
 
@@ -535,12 +535,12 @@ namespace ScoutingCollection
         {
             get
             {
-                if (gears_selected)
+                if (place_selected)
                 {
-                    return boil_gear;
+                    return place_opp;
                 }
                 else
-                    return grnd_pckp;
+                    return pckp_exch;
             }
         }
 
@@ -612,41 +612,47 @@ namespace ScoutingCollection
         {
             if (tele)
             {
-                load_gear = new Button
+                place_switch = new Button
                 {
-                    Text = String.Format("Loading Gears = {0}", TeleGearLoad),
+                    Text = String.Format("Switch Cubes = {0}", Tele_Switch),
                     Command = IncrementCommand,
-                    CommandParameter = "load_gear"
+                    CommandParameter = "place_switch"
                 };
-                cent_gear = new Button
+                place_scale = new Button
                 {
-                    Text = String.Format("Center Gears = {0}", TeleGearCent),
+                    Text = String.Format("Scale Cubes = {0}", Tele_Scale),
                     Command = IncrementCommand,
-                    CommandParameter = "cent_gear"
+                    CommandParameter = "place_scale"
                 };
-                boil_gear = new Button
+                place_opp = new Button
                 {
-                    Text = String.Format("Boiler Gears = {0}", TeleGearBoil),
+                    Text = String.Format("Opposing Cubes = {0}", Opp_Switch),
                     Command = IncrementCommand,
-                    CommandParameter = "boil_gear"
+                    CommandParameter = "place_opp"
                 };
-                drop_gear = new Button
+                place_exch = new Button
                 {
-                    Text = String.Format("Gears Dropped = {0}", TeleGearDrop),
+                    Text = String.Format("Exchange Cubes = {0}", Tele_Exchange),
                     Command = IncrementCommand,
-                    CommandParameter = "drop_gear"
+                    CommandParameter = "place_exch"
                 };
-                load_pckp = new Button
+                pckp_pyr = new Button
                 {
-                    Text = String.Format("Loading Pickup = {0}", TeleLoadPckp),
+                    Text = String.Format("Pyramid Pickup = {0}", Pckp_Pyramid),
                     Command = IncrementCommand,
-                    CommandParameter = "load_pckp"
+                    CommandParameter = "pckp_pyr"
                 };
-                grnd_pckp = new Button
+                pckp_grnd = new Button
                 {
-                    Text = String.Format("Ground Pickup = {0}", TeleGrndPckp),
+                    Text = String.Format("Ground Pickup = {0}", Pckp_Ground),
                     Command = IncrementCommand,
-                    CommandParameter = "grnd_pckp"
+                    CommandParameter = "pckp_grnd"
+                };
+                pckp_exch = new Button
+                {
+                    Text = String.Format("Exchange Pickup = {0}", Pckp_Exchange),
+                    Command = IncrementCommand,
+                    CommandParameter = "pckp_exch"
                 };
                 RefreshButtons();
             }
@@ -698,34 +704,39 @@ namespace ScoutingCollection
             {
                 switch (parameter)
                 {
-                    case "load_gear":
-                        (report as MatchScout).tele_gear_load++;
-                        OnPropertyChanged("TeleGearLoad");
+                    case "place_switch":
+                        (report as MatchScout).tele_switch++;
+                        OnPropertyChanged("Tele_Switch");
                         setButtonProperties();
                         break;
-                    case "cent_gear":
-                        (report as MatchScout).tele_gear_cent++;
-                        OnPropertyChanged("TeleGearCent");
+                    case "place_scale":
+                        (report as MatchScout).tele_scale++;
+                        OnPropertyChanged("Tele_Scale");
                         setButtonProperties();
                         break;
-                    case "boil_gear":
-                        (report as MatchScout).tele_gear_boil++;
-                        OnPropertyChanged("TeleGearBoil");
+                    case "place_opp":
+                        (report as MatchScout).opp_switch++;
+                        OnPropertyChanged("Opp_Switch");
                         setButtonProperties();
                         break;
-                    case "drop_gear":
-                        (report as MatchScout).tele_gear_drop++;
-                        OnPropertyChanged("TeleGearDrop");
+                    case "place_exch":
+                        (report as MatchScout).tele_exchange++;
+                        OnPropertyChanged("Tele_Exchange");
                         setButtonProperties();
                         break;
-                    case "grnd_pckp":
-                        (report as MatchScout).tele_grnd_pckp++;
-                        OnPropertyChanged("TeleGrndPckp");
+                    case "pckp_pyr":
+                        (report as MatchScout).pckp_pyramid++;
+                        OnPropertyChanged("Pckp_Pyramid");
                         setButtonProperties();
                         break;
-                    case "load_pckp":
-                        (report as MatchScout).tele_load_pckp++;
-                        OnPropertyChanged("TeleLoadPckp");
+                    case "pckp_grnd":
+                        (report as MatchScout).pckp_grnd++;
+                        OnPropertyChanged("Pckp_Ground");
+                        setButtonProperties();
+                        break;
+                    case "pckp_exch":
+                        (report as MatchScout).pckp_exchange++;
+                        OnPropertyChanged("Pckp_Exchange");
                         setButtonProperties();
                         break;
                 }

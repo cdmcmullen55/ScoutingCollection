@@ -8,7 +8,7 @@ namespace ScoutingCollection
 {
 	public class MatchScout : Scout
 	{
-		public int  match_number, auto_switch, auto_scale, auto_exchange, tele_switch, tele_scale, tele_exchange, opp_switch, pckp_center, 
+		public int  match_number, auto_switch, auto_scale, auto_exchange, tele_switch, tele_scale, tele_exchange, opp_switch, pckp_grnd, 
             pckp_pyramid, pckp_exchange, climb_speed, dfnse_scaled, pckp_total, place_total;
 		public bool auto_none, auto_break, auto_pckp, auto_handles_rand, tele_none, tele_break, climb_att, climb_succ, defense, win, auto_quest, 
             face_boss;
