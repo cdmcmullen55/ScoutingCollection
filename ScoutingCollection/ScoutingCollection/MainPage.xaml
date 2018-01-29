@@ -30,7 +30,6 @@
                        Keyboard="Numeric"
                        Text="{Binding Match, Mode=OneWayToSource}"
                        TextChanged="Match_TextChanged"
-                       Completed="Match_Completed"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"/>
             </StackLayout>

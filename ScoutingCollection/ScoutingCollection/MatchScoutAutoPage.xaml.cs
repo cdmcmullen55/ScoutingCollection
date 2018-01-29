@@ -16,7 +16,15 @@ namespace ScoutingCollection
 		{
 			InitializeComponent ();
             BindingContext = mvm;
-		}
+            Grid.SetColumn(ButtonOne, 0);
+            Grid.SetColumnSpan(ButtonOne, 3);
+            Grid.SetColumn(ButtonTwo, 3);
+            Grid.SetColumnSpan(ButtonTwo, 3);
+            Grid.SetColumn(ButtonThree, 6);
+            Grid.SetColumnSpan(ButtonThree, 3);
+            Grid.SetColumn(ButtonFour, 9);
+            Grid.SetColumnSpan(ButtonFour, 3);
+        }
 
         async void back_Clicked(object sender , EventArgs e)
         {
