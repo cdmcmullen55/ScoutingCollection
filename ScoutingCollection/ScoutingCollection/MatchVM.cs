@@ -93,6 +93,54 @@ namespace ScoutingCollection
             }
         }
 
+        public int Auto_Pyr_Pckp
+        {
+            set
+            {
+                if ((report as MatchScout).auto_pyr_pckp != value)
+                {
+                    (report as MatchScout).auto_pyr_pckp = value;
+                    OnPropertyChanged("Auto_Pyr_Pckp");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_pyr_pckp;
+            }
+        }
+
+        public int Auto_Grnd_Pckp
+        {
+            set
+            {
+                if((report as MatchScout).auto_grnd_pckp != value)
+                {
+                    (report as MatchScout).auto_grnd_pckp = value;
+                    OnPropertyChanged("Auto_Grnd_Pckp");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_grnd_pckp;
+            }
+        }
+
+        public int Auto_Exch_Pckp
+        {
+            set
+            {
+                if((report as MatchScout).auto_exch_pckp != value)
+                {
+                    (report as MatchScout).auto_exch_pckp = value;
+                    OnPropertyChanged("Auto_Exch_Pckp");
+                }
+            }
+            get
+            {
+                return (report as MatchScout).auto_exch_pckp;
+            }
+        }
+
         public int Tele_Switch
         {
             set
@@ -317,22 +365,6 @@ namespace ScoutingCollection
             }
         }
 
-        public bool Auto_Pckp
-        {
-            set
-            {
-                if((report as MatchScout).auto_pckp != value)
-                {
-                    (report as MatchScout).auto_pckp = value;
-                    OnPropertyChanged("Auto_Pckp");
-                }
-            }
-            get
-            {
-                return (report as MatchScout).auto_pckp;
-            }
-        }
-
         public bool Auto_Handles_Rand
         {
             set
@@ -511,7 +543,7 @@ namespace ScoutingCollection
             {
                 if (place_selected)
                 {
-                    return place_scale;
+                    return place_switch;
                 }
                 else
                     return pckp_pyr;
@@ -524,7 +556,7 @@ namespace ScoutingCollection
             {
                 if (place_selected)
                 {
-                    return place_switch;
+                    return place_scale;
                 }
                 else
                     return pckp_grnd;
@@ -541,6 +573,14 @@ namespace ScoutingCollection
                 }
                 else
                     return pckp_exch;
+            }
+        }
+
+        public Button ButtonFour
+        {
+            get
+            {
+                return place_exch;
             }
         }
 
@@ -658,41 +698,48 @@ namespace ScoutingCollection
             }
             else
             {
-                load_gear = new Button
+                place_switch = new Button
                 {
-                    Text = String.Format("Loading Gears = {0}", AutoGearLoad),
+                    Text = String.Format("Switch Cubes = {0}", Auto_Switch),
                     Command = IncrementCommand,
-                    CommandParameter = "load_gear"
+                    CommandParameter = "place_switch"
                 };
-                cent_gear = new Button
+                place_scale = new Button
                 {
-                    Text = String.Format("Center Gears = {0}", AutoGearCent),
+                    Text = String.Format("Scale Cubes = {0}", Auto_Scale),
                     Command = IncrementCommand,
-                    CommandParameter = "cent_gear"
+                    CommandParameter = "place_scale"
                 };
-                boil_gear = new Button
+                place_opp = new Button
                 {
-                    Text = String.Format("Boiler Gears = {0}", AutoGearBoil),
+                    Text = "Opposing Switch Disabled",
                     Command = IncrementCommand,
-                    CommandParameter = "boil_gear"
+                    CommandParameter = null,
+                    IsEnabled = false
                 };
-                drop_gear = new Button
+                place_exch = new Button
                 {
-                    Text = String.Format("Gears Dropped = {0}", AutoGearDrop),
+                    Text = String.Format("Exchange Cubes = {0}", Auto_Exchange),
                     Command = IncrementCommand,
-                    CommandParameter = "drop_gear"
+                    CommandParameter = "place_exch"
                 };
-                load_pckp = new Button
+                pckp_pyr = new Button
                 {
-                    Text = String.Format("Loading Pickup = {0}", AutoLoadPckp),
+                    Text = String.Format("Pyramid Pickup = {0}", Auto_Pyr_Pckp),
                     Command = IncrementCommand,
-                    CommandParameter = "load_pckp"
+                    CommandParameter = "pckp_pyr"
                 };
-                grnd_pckp = new Button
+                pckp_grnd = new Button
                 {
-                    Text = String.Format("Ground Pickup = {0}", AutoGrndPckp),
+                    Text = String.Format("Ground Pickup = {0}", Auto_Grnd_Pckp),
                     Command = IncrementCommand,
-                    CommandParameter = "grnd_pckp"
+                    CommandParameter = "pckp_grnd"
+                };
+                pckp_exch = new Button
+                {
+                    Text = String.Format("Exchange Pickup = {0}", Auto_Exch_Pckp),
+                    Command = IncrementCommand,
+                    CommandParameter = "pckp_exch"
                 };
                 RefreshButtons();
             }
@@ -745,34 +792,34 @@ namespace ScoutingCollection
             {
                 switch (parameter)
                 {
-                    case "load_gear":
-                        (report as MatchScout).auto_gear_load++;
-                        OnPropertyChanged("AutoGearLoad");
+                    case "place_switch":
+                        (report as MatchScout).auto_switch++;
+                        OnPropertyChanged("Auto_Switch");
                         setButtonProperties();
                         break;
-                    case "cent_gear":
-                        (report as MatchScout).auto_gear_cent++;
-                        OnPropertyChanged("AutoGearCent");
+                    case "place_scale":
+                        (report as MatchScout).auto_scale++;
+                        OnPropertyChanged("Auto_Scale");
                         setButtonProperties();
                         break;
-                    case "boil_gear":
-                        (report as MatchScout).auto_gear_boil++;
-                        OnPropertyChanged("AutoGearBoil");
+                    case "place_exch":
+                        (report as MatchScout).auto_exchange++;
+                        OnPropertyChanged("Auto_Exchange");
                         setButtonProperties();
                         break;
-                    case "drop_gear":
-                        (report as MatchScout).auto_gear_drop++;
-                        OnPropertyChanged("AutoGearDrop");
+                    case "pckp_pyr":
+                        (report as MatchScout).auto_pyr_pckp++;
+                        OnPropertyChanged("Auto_Pyr_Pckp");
                         setButtonProperties();
                         break;
-                    case "grnd_pckp":
+                    case "pckp_grnd":
                         (report as MatchScout).auto_grnd_pckp++;
-                        OnPropertyChanged("AutoGrndPckp");
+                        OnPropertyChanged("Auto_Grnd_Pckp");
                         setButtonProperties();
                         break;
-                    case "load_pckp":
-                        (report as MatchScout).auto_load_pckp++;
-                        OnPropertyChanged("AutoLoadPckp");
+                    case "pckp_exch":
+                        (report as MatchScout).auto_exch_pckp++;
+                        OnPropertyChanged("Auto_Exch_Pckp");
                         setButtonProperties();
                         break;
                 }

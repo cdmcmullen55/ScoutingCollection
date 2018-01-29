@@ -30,16 +30,31 @@ namespace ScoutingCollection
                 await Navigation.PopModalAsync();
         }
 
-        private void gears_Clicked(object sender, EventArgs e)
+        private void place_Clicked(object sender, EventArgs e)
         {
             ((BindingContext as MainViewModel).currentReport as MatchVM).place_selected = true;
-            ((BindingContext as MainViewModel).currentReport as MatchVM).RefreshButtons();
+            ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+            Grid.SetColumn(ButtonOne, 0);
+            Grid.SetColumnSpan(ButtonOne, 3);
+            Grid.SetColumn(ButtonTwo, 3);
+            Grid.SetColumnSpan(ButtonTwo, 3);
+            Grid.SetColumn(ButtonThree, 6);
+            Grid.SetColumnSpan(ButtonThree, 3);
+            Grid.SetColumn(ButtonFour, 9);
+            Grid.SetColumnSpan(ButtonFour, 3);
         }
 
         private void pickup_Clicked(object sender, EventArgs e)
         {
             ((BindingContext as MainViewModel).currentReport as MatchVM).place_selected = false;
-            ((BindingContext as MainViewModel).currentReport as MatchVM).RefreshButtons();
+            ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
+            Grid.SetColumn(ButtonOne, 0);
+            Grid.SetColumnSpan(ButtonOne, 4);
+            Grid.SetColumnSpan(ButtonTwo, 4);
+            Grid.SetColumnSpan(ButtonTwo, 4);
+            Grid.SetColumn(ButtonThree, 8);
+            Grid.SetColumnSpan(ButtonThree, 4);
+            ButtonFour.IsVisible = false;
         }
 
         async void continue_Clicked(object sender, EventArgs e)
