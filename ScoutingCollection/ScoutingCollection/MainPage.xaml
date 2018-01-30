@@ -56,10 +56,7 @@
                     Text="Pit Scout Team" 
                     Clicked="PitScout_Clicked"
                     FontSize="Medium"
-                    VerticalOptions="CenterAndExpand">
-                <Button.CommandParameter>
-                </Button.CommandParameter>
-            </Button>
+                    VerticalOptions="CenterAndExpand"/>
 
             <Button x:Name="MatchScout" 
                     Text="Scout Match" 

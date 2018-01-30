@@ -14,11 +14,20 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="Welcome to Xamarin Forms!" />
 
                 <Button Text="Back"
                         FontSize="Medium"
                         Clicked="Back_Clicked"/>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Auto Successful?"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="handles_rand"
+                            IsToggled="{Binding CurrentReport.Auto_Handles_Rand, Mode=OneWayToSource}"
+                            HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Climb Attempted?"
@@ -26,7 +35,7 @@
                            VerticalOptions="Center"
                            HorizontalOptions="StartAndExpand"/>
                     <Switch x:Name="climb_att"
-                            IsToggled="{Binding CurrentReport.TkoffAtt}"
+                            IsToggled="{Binding CurrentReport.Climb_Att}"
                             HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
 
@@ -36,17 +45,18 @@
                            VerticalOptions="Center"/>
                     <Switch x:Name="climb_succ"
                             HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding CurrentReport.TkoffSucc}"
-                            IsEnabled="{Binding CurrentReport.TkoffAtt}"/>
+                            IsToggled="{Binding CurrentReport.Climb_Succ}"
+                            IsEnabled="{Binding CurrentReport.Climb_Att}"/>
                 </StackLayout>
 
-                <Label Text="{Binding CurrentReport.TkoffSpeed, StringFormat='Climb Speed (1-5): {0}'}"
+                <Label Text="{Binding CurrentReport.Climb_Speed, StringFormat='Climb Speed (1-5): {0}'}"
                        FontSize="Medium"/>
 
                 <Slider x:Name="climb_speed"
                         Maximum="5"
                         Minimum="1"
-                        Value="{Binding CurrentReport.TkoffSpeed, Mode=OneWayToSource}"/>
+                        Value="{Binding CurrentReport.Climb_Speed, Mode=OneWayToSource}"
+                        IsEnabled="{Binding CurrentReport.Climb_Att}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
                     <Label Text="Win?"
@@ -54,25 +64,34 @@
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="Center"/>
                     <Switch x:Name="win"
-                            IsToggled="{Binding Current.Report.Win}"/>
+                            IsToggled="{Binding CurrentReport.Win}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
-                    <Label Text="Rotors?"
+                    <Label Text="Faced Boss?"
                            FontSize="Medium"
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="Center"/>
-                    <Switch x:Name="rotors"
-                            IsToggled="{Binding Current.Report.Rotors}"/>
+                    <Switch x:Name="face_boss"
+                            IsToggled="{Binding CurrentReport.Face_Boss}"/>
                 </StackLayout>
 
-                <Label Text="{Binding CurrentReport.DfnseRate, StringFormat='Defense (1-5): {0}'}"
+                <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
+                    <Label Text="Auto Quest?"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"/>
+                    <Switch x:Name="auto_quest"
+                            IsToggled="{Binding CurrentReport.Auto_Quest}"/>
+                </StackLayout>
+
+                <Label Text="{Binding CurrentReport.Dfnse_Scaled, StringFormat='Defense (1-5): {0}'}"
                        FontSize="Medium"/>
 
                 <Slider x:Name="dfnse_rate"
                         Maximum="5"
                         Minimum="1"
-                        Value="{Binding CurrentReport.DfnseRate, Mode=OneWayToSource}"/>
+                        Value="{Binding CurrentReport.Dfnse_Scaled, Mode=OneWayToSource}"/>
 
                 <Button Text="Save Report"
                         FontSize="Medium"
