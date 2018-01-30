@@ -6,6 +6,11 @@
              x:Class="ScoutingCollection.MainPage">
 
     <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderWidth" Value="5"/>
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>

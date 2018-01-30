@@ -48,6 +48,7 @@ namespace ScoutingCollection
             Grid.SetColumnSpan(ButtonTwo, 3);
             Grid.SetColumn(ButtonThree, 6);
             Grid.SetColumnSpan(ButtonThree, 3);
+            ButtonFour.IsVisible = true;
             Grid.SetColumn(ButtonFour, 9);
             Grid.SetColumnSpan(ButtonFour, 3);
         }
@@ -58,7 +59,7 @@ namespace ScoutingCollection
             ((BindingContext as MainViewModel).currentReport as MatchVM).setButtonProperties();
             Grid.SetColumn(ButtonOne, 0);
             Grid.SetColumnSpan(ButtonOne, 4);
-            Grid.SetColumnSpan(ButtonTwo, 4);
+            Grid.SetColumn(ButtonTwo, 4);
             Grid.SetColumnSpan(ButtonTwo, 4);
             Grid.SetColumn(ButtonThree, 8);
             Grid.SetColumnSpan(ButtonThree, 4);
