@@ -70,25 +70,25 @@
                         Text="{Binding CurrentReport.ButtonOne.Text}"
                         Command="{Binding CurrentReport.ButtonOne.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonOne.CommandParameter}"
-                        Row="4"/>
+                        Grid.Row="4"/>
 
                 <Button x:Name="ButtonTwo"
                         Text="{Binding CurrentReport.ButtonTwo.Text}"
                         Command="{Binding CurrentReport.ButtonTwo.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonTwo.CommandParameter}"
-                        Row="4"/>
+                        Grid.Row="4"/>
 
                 <Button x:Name="ButtonThree"
                         Text="{Binding CurrentReport.ButtonThree.Text}"
                         Command="{Binding CurrentReport.ButtonThree.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonThree.CommandParameter}"
-                        Row="4"/>
+                        Grid.Row="4"/>
 
                 <Button x:Name="ButtonFour"
                         Text="{Binding CurrentReport.ButtonFour.Text}"
                         Command="{Binding CurrentReport.ButtonFour.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonFour.CommandParameter}"
-                        Row="4"/>
+                        Grid.Row="4"/>
 
                 <Button x:Name="baseline"
                         Text="Baseline"
