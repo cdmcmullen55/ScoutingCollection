@@ -137,34 +137,20 @@ namespace ScoutingCollection
             currentReport = msvm;
         }
 
-        public void SaveForExport()
-        {
-            SaveForExport(false);
-        }
-
-        public async void SaveForExport(bool savevm)
+        public async Task SaveForExport()
         {
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             IFolder folder = await rootFolder.CreateFolderAsync("ReportSave",
                 CreationCollisionOption.OpenIfExists);
-            if (savevm)
-            {
-                vmfile = await folder.CreateFileAsync("vmmodels.xml", 
+            modelfile = await folder.CreateFileAsync("reportmodels.xml",
                     CreationCollisionOption.ReplaceExisting);
-                await vmfile.WriteAllTextAsync(SerializeReportsList(true));
-            }
-            else
-            {
-                modelfile = await folder.CreateFileAsync("reportmodels.xml",
-                    CreationCollisionOption.ReplaceExisting);
-                GenerateReportsList();
-                await modelfile.WriteAllTextAsync(SerializeReportsList());
-            }
+            GenerateReportsList();
+            await modelfile.WriteAllTextAsync(SerializeReportsList());
         }
 
-        public void Export()
+        public async Task ExportAsync()
         {
-            SaveForExport();
+            await SaveForExport();
             var emailMessenger = CrossMessaging.Current.EmailMessenger;
             if (emailMessenger.CanSendEmailAttachments && emailMessenger.CanSendEmailAttachments)
             {
@@ -188,24 +174,11 @@ namespace ScoutingCollection
 
         private string SerializeReportsList()
         {
-            return SerializeReportsList(false);
-        }
-
-        private string SerializeReportsList(bool serializevm)
-        {
             string results;
             XmlSerializer serializer;
             StringWriter textWriter = new StringWriter();
-            if (serializevm)
-            {
-                serializer = new XmlSerializer(typeof(List<ScoutVM>));
-                serializer.Serialize(textWriter, (reports as List<ScoutVM>));
-            }
-            else
-            {
-                serializer = new XmlSerializer(typeof(List<Scout>));
-                serializer.Serialize(textWriter, (reportmodels as List<Scout>));
-            }
+            serializer = new XmlSerializer(typeof(List<Scout>));
+            serializer.Serialize(textWriter, (reportmodels as List<Scout>));
             results = textWriter.ToString();
             return results;
         }

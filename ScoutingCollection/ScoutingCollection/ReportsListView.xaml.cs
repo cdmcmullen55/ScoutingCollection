@@ -41,9 +41,9 @@ namespace ScoutingCollection
             await Navigation.PopModalAsync();
         }
 
-        private void ExportAll_Clicked(object sender, EventArgs e)
+        private async void ExportAll_Clicked(object sender, EventArgs e)
         {
-            (BindingContext as MainViewModel).Export();
+            await (BindingContext as MainViewModel).ExportAsync();
         }
 
         async void OnEdit(object sender, EventArgs e)

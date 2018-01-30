@@ -31,7 +31,6 @@ namespace ScoutingCollection
         protected override void OnSleep()
         {
             // Handle when your app sleeps
-            mvm.SaveForExport(true);
         }
 
         protected override void OnResume()
