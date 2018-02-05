@@ -64,7 +64,7 @@
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="Center"/>
                     <Switch x:Name="win"
-                            IsToggled="{Binding CurrentReport.Win}"/>
+                            IsToggled="{Binding CurrentReport.Win, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
@@ -73,7 +73,7 @@
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="Center"/>
                     <Switch x:Name="face_boss"
-                            IsToggled="{Binding CurrentReport.Face_Boss}"/>
+                            IsToggled="{Binding CurrentReport.Face_Boss, Mode=OneWayToSource}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,10,80,10">
