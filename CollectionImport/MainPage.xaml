@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="CollectionImport.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CollectionImport"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBox x:Name="file"
+                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,20" Height="36" Width="421"
+                     Text="{x:Bind ViewModel.Filepath}" FontSize="18"/>
+            <Button Content="Import File" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,20" Height="68" Width="248"
+                    Click="Import_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
