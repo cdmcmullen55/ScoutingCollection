@@ -38,10 +38,19 @@ namespace CollectionImport
             }
         }
 
-        public void ImportFile()
+        public async Task ImportFile()
         {
             serializer = new XmlSerializer(typeof(List<Scout>));
-            System.Xml.XmlReader reader = new System.Xml.XmlReader(filepath);
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                Async = true
+            };
+            XmlReader reader;
+            await Task.Run(() =>
+                { reader = XmlReader.Create(filepath, settings); }
+            );
+            
+            reports = (List<Scout>)serializer.Deserialize(reader);
         }
 
         protected void OnPropertyChanged(string propertyName)
