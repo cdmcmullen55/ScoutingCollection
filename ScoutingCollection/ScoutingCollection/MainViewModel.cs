@@ -152,12 +152,13 @@ namespace ScoutingCollection
         {
             await SaveForExport();
             var emailMessenger = CrossMessaging.Current.EmailMessenger;
+            string now = DateTime.Now.ToString("MM/dd");
             if (emailMessenger.CanSendEmailAttachments && emailMessenger.CanSendEmailAttachments)
             {
                 var email = new EmailMessageBuilder()
                     .To("bd541331@ahschool.com")
-                    .Subject("Xamarin Messaging Plugin")
-                    .Body("Well hello there from Xam.Messaging.Plugin")
+                    .Subject("Reports from "+now)
+                    .Body("Reports from "+now)
                     .WithAttachment(modelfile.Path, "xml")
                     .Build();
                 emailMessenger.SendEmail(email);
@@ -195,6 +196,12 @@ namespace ScoutingCollection
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void ClearReports()
+        {
+            reports = new List<ScoutVM>();
+            reportmodels = new List<Scout>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -44,6 +45,11 @@ namespace ScoutingCollection
         private async void ExportAll_Clicked(object sender, EventArgs e)
         {
             await (BindingContext as MainViewModel).ExportAsync();
+            bool delete = await DisplayAlert("Clear Reports", "Delete current reports?", "Yes", "No");
+            if (delete)
+            {
+                (BindingContext as MainViewModel).ClearReports();
+            }
         }
 
         async void OnEdit(object sender, EventArgs e)
