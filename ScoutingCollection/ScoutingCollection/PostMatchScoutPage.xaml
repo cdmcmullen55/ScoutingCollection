@@ -100,6 +100,9 @@
                 <Button Text="Cancel"
                         FontSize="Medium"
                         Clicked="Cancel_Clicked"/>
+                
+                <Editor x:Name="comments"
+                        Text="{Binding CurrentReport.Comments, Mode=OneWayToSource}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

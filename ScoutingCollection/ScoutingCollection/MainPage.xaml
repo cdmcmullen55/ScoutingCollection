@@ -39,6 +39,19 @@
                        HorizontalOptions="Center"/>
             </StackLayout>
 
+            <Picker x:Name="startpos"
+                    Title="Starting Position"
+                    VerticalOptions="CenterAndExpand"
+                    SelectedIndex="{Binding StartPos, Mode=OneWayToSource}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Left</x:String>
+                        <x:String>Center</x:String>
+                        <x:String>Right</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
             <Picker x:Name="comp"
                     Title="Competition"
                     VerticalOptions="CenterAndExpand"

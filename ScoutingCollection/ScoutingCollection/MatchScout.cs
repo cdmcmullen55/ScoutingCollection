@@ -21,11 +21,12 @@ namespace ScoutingCollection
             is_match = true;
         }
 
-        public MatchScout(int team_num, int match_num)
+        public MatchScout(int team_num, int match_num, int start)
         {
             team = team_num;
             match_number = match_num;
             is_match = true;
+            start_pos = start;
         }
 	}
 }

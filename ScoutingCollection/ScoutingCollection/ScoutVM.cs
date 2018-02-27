@@ -127,6 +127,22 @@ namespace ScoutingCollection
             }
         }
 
+        public String Comments
+        {
+            set
+            {
+                if (report.comments != value)
+                {
+                    report.comments = value;
+                    OnPropertyChanged("Comments");
+                }
+            }
+            get
+            {
+                return report.comments;
+            }
+        }
+
         public string Preview
         {
             set
@@ -148,6 +164,12 @@ namespace ScoutingCollection
             {
                 serializer = new XmlSerializer(typeof(MatchScout));
                 serializer.Serialize(textWriter, (report as MatchScout));
+                (report as MatchScout).place_total = (report as MatchScout).opp_switch + (report as MatchScout).auto_scale + 
+                    (report as MatchScout).auto_switch + (report as MatchScout).tele_scale + (report as MatchScout).tele_switch + 
+                    (report as MatchScout).tele_exchange;
+                (report as MatchScout).pckp_total = (report as MatchScout).auto_pyr_pckp + (report as MatchScout).auto_grnd_pckp +
+                    (report as MatchScout).auto_exch_pckp + (report as MatchScout).pckp_exchange + (report as MatchScout).pckp_grnd +
+                    (report as MatchScout).pckp_pyramid;
             }
             else
             {

@@ -45,6 +45,12 @@
                         Grid.Row="0"
                         Grid.Column="0" Grid.ColumnSpan="2"/>
 
+                <Button x:Name="Undo"
+                        Text="Undo"
+                        Clicked="Undo_Clicked"
+                        Grid.Row="0"
+                        Grid.Column="6" Grid.ColumnSpan="2"/>
+
                 <Button x:Name="continue"
                         Text="Continue"
                         Clicked="continue_Clicked"
@@ -77,24 +83,28 @@
 
                 <Button x:Name="ButtonOne"
                         Text="{Binding CurrentReport.ButtonOne.Text}"
+                        Clicked="Button_Clicked"
                         Command="{Binding CurrentReport.ButtonOne.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonOne.CommandParameter}"
                         Grid.Row="4"/>
 
                 <Button x:Name="ButtonTwo"
                         Text="{Binding CurrentReport.ButtonTwo.Text}"
+                        Clicked="Button_Clicked"
                         Command="{Binding CurrentReport.ButtonTwo.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonTwo.CommandParameter}"
                         Grid.Row="4"/>
 
                 <Button x:Name="ButtonThree"
                         Text="{Binding CurrentReport.ButtonThree.Text}"
+                        Clicked="Button_Clicked"
                         Command="{Binding CurrentReport.ButtonThree.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonThree.CommandParameter}"
                         Grid.Row="4"/>
 
                 <Button x:Name="ButtonFour"
                         Text="{Binding CurrentReport.ButtonFour.Text}"
+                        Clicked="Button_Clicked"
                         Command="{Binding CurrentReport.ButtonFour.Command}"
                         CommandParameter="{Binding CurrentReport.ButtonFour.CommandParameter}"
                         Grid.Row="4"/>

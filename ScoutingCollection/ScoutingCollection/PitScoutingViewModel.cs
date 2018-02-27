@@ -259,21 +259,21 @@ namespace ScoutingCollection
             }
         }
 
-        public string Comments
-        {
-            set
-            {
-                if((report as PitScout).comments != value)
-                {
-                    (report as PitScout).comments = value;
-                    OnPropertyChanged("Comments");
-                }
-            }
-            get
-            {
-                return (report as PitScout).comments;
-            }
-        }
+        //public string Comments
+        //{
+        //    set
+        //    {
+        //        if((report as PitScout).comments != value)
+        //        {
+        //            (report as PitScout).comments = value;
+        //            OnPropertyChanged("Comments");
+        //        }
+        //    }
+        //    get
+        //    {
+        //        return (report as PitScout).comments;
+        //    }
+        //}
 
         public String File_Name
         {

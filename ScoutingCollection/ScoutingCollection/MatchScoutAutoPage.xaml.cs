@@ -16,6 +16,7 @@ namespace ScoutingCollection
 		{
 			InitializeComponent ();
             BindingContext = mvm;
+            Undo.IsEnabled = false;
             Grid.SetColumn(ButtonOne, 0);
             Grid.SetColumnSpan(ButtonOne, 3);
             Grid.SetColumn(ButtonTwo, 3);
@@ -66,6 +67,11 @@ namespace ScoutingCollection
             ButtonFour.IsVisible = false;
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Undo.IsEnabled = (((BindingContext as MainViewModel).currentReport as MatchVM).undolist.Count != 0);
+        }
+
         async void continue_Clicked(object sender, EventArgs e)
         {
             if (((BindingContext as MainViewModel).currentReport as MatchVM).Tele)
@@ -91,6 +97,12 @@ namespace ScoutingCollection
         private void baseline_Clicked(object sender, EventArgs e)
         {
             ((BindingContext as MainViewModel).currentReport as MatchVM).Baseline = true;
+        }
+
+        private void Undo_Clicked(object sender, EventArgs e)
+        {
+            ((BindingContext as MainViewModel).currentReport as MatchVM).Undo();
+            Undo.IsEnabled = (((BindingContext as MainViewModel).currentReport as MatchVM).undolist.Count != 0);
         }
     }
 }

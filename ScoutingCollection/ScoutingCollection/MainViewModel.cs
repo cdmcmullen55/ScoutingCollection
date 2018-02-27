@@ -17,7 +17,7 @@ namespace ScoutingCollection
     {
         public List<ScoutVM> reports = new List<ScoutVM>();
         public List<Scout> reportmodels = new List<Scout>();
-        int team, match;
+        int team, match, start_pos;
         bool currentIsMatch;
         public ScoutVM currentReport;
         private IFile modelfile, vmfile;
@@ -89,6 +89,22 @@ namespace ScoutingCollection
             }
         }
 
+        public int StartPos
+        {
+            set
+            {
+                if(start_pos != value)
+                {
+                    start_pos = value;
+                    OnPropertyChanged("StartPos");
+                }
+            }
+            get
+            {
+                return start_pos;
+            }
+        }
+
         public ScoutVM CurrentReport
         {
             set
@@ -128,7 +144,7 @@ namespace ScoutingCollection
         public void InitMatchScout()
         {
             currentIsMatch = true;
-            currentReport = new MatchVM(team, match);
+            currentReport = new MatchVM(team, match, start_pos);
         }
 
         public void InitMatchScout(MatchVM msvm)
@@ -169,6 +185,7 @@ namespace ScoutingCollection
         {
             foreach(ScoutVM report in reports)
             {
+                report.generatePreview();
                 reportmodels.Add(report.report);
             }
         }

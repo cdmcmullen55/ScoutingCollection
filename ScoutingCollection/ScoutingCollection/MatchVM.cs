@@ -12,13 +12,15 @@ namespace ScoutingCollection
     {
         public bool place_selected, tele;
 
+        public List<String> undolist = new List<string>();
+
         public Button place_scale, place_switch, place_opp, place_exch, pckp_exch, pckp_pyr, pckp_grnd;
 
         public ICommand IncrementCommand { private set; get; }
 
-        public MatchVM(int team_num, int match_num)
+        public MatchVM(int team_num, int match_num, int start_pos)
         {
-            report = new MatchScout(team_num, match_num);
+            report = new MatchScout(team_num, match_num, start_pos);
             place_selected = true;
             tele = false;
             isMatch = true;
@@ -745,6 +747,7 @@ namespace ScoutingCollection
 
         public void Increment(string parameter)
         {
+            undolist.Add(parameter);
             if (tele)
             {
                 switch (parameter)
@@ -817,6 +820,90 @@ namespace ScoutingCollection
                         break;
                     case "pckp_exch":
                         (report as MatchScout).auto_exch_pckp++;
+                        OnPropertyChanged("Auto_Exch_Pckp");
+                        setButtonProperties();
+                        break;
+                }
+            }
+            //System.Diagnostics.Debug.WriteLine("Command Executed");
+        }
+
+        public void Undo()
+        {
+            string parameter = undolist[0];
+            undolist.RemoveAt(0);
+            if (tele)
+            {
+                switch (parameter)
+                {
+                    case "place_switch":
+                        (report as MatchScout).tele_switch--;
+                        OnPropertyChanged("Tele_Switch");
+                        setButtonProperties();
+                        break;
+                    case "place_scale":
+                        (report as MatchScout).tele_scale--;
+                        OnPropertyChanged("Tele_Scale");
+                        setButtonProperties();
+                        break;
+                    case "place_opp":
+                        (report as MatchScout).opp_switch--;
+                        OnPropertyChanged("Opp_Switch");
+                        setButtonProperties();
+                        break;
+                    case "place_exch":
+                        (report as MatchScout).tele_exchange--;
+                        OnPropertyChanged("Tele_Exchange");
+                        setButtonProperties();
+                        break;
+                    case "pckp_pyr":
+                        (report as MatchScout).pckp_pyramid--;
+                        OnPropertyChanged("Pckp_Pyramid");
+                        setButtonProperties();
+                        break;
+                    case "pckp_grnd":
+                        (report as MatchScout).pckp_grnd--;
+                        OnPropertyChanged("Pckp_Ground");
+                        setButtonProperties();
+                        break;
+                    case "pckp_exch":
+                        (report as MatchScout).pckp_exchange--;
+                        OnPropertyChanged("Pckp_Exchange");
+                        setButtonProperties();
+                        break;
+                }
+            }
+            else
+            {
+                switch (parameter)
+                {
+                    case "place_switch":
+                        (report as MatchScout).auto_switch--;
+                        OnPropertyChanged("Auto_Switch");
+                        setButtonProperties();
+                        break;
+                    case "place_scale":
+                        (report as MatchScout).auto_scale--;
+                        OnPropertyChanged("Auto_Scale");
+                        setButtonProperties();
+                        break;
+                    case "place_exch":
+                        (report as MatchScout).auto_exchange--;
+                        OnPropertyChanged("Auto_Exchange");
+                        setButtonProperties();
+                        break;
+                    case "pckp_pyr":
+                        (report as MatchScout).auto_pyr_pckp--;
+                        OnPropertyChanged("Auto_Pyr_Pckp");
+                        setButtonProperties();
+                        break;
+                    case "pckp_grnd":
+                        (report as MatchScout).auto_grnd_pckp--;
+                        OnPropertyChanged("Auto_Grnd_Pckp");
+                        setButtonProperties();
+                        break;
+                    case "pckp_exch":
+                        (report as MatchScout).auto_exch_pckp--;
                         OnPropertyChanged("Auto_Exch_Pckp");
                         setButtonProperties();
                         break;
