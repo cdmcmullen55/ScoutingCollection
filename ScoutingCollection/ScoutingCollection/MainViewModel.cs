@@ -158,7 +158,7 @@ namespace ScoutingCollection
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             IFolder folder = await rootFolder.CreateFolderAsync("ReportSave",
                 CreationCollisionOption.OpenIfExists);
-            modelfile = await folder.CreateFileAsync("reportmodels.xml",
+            modelfile = await folder.CreateFileAsync("reportmodels" + DateTime.Now.ToString(@"MM/dd HH:mm") + ".xml",
                     CreationCollisionOption.ReplaceExisting);
             GenerateReportsList();
             await modelfile.WriteAllTextAsync(SerializeReportsList());
